@@ -1,4 +1,4 @@
-package com.quickcalculator;
+package com.javaapps.calculators.pojos;
 
 public class VATCalculator {
 
