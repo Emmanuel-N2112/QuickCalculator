@@ -1,54 +1,65 @@
 package com.javaapps.calculators;
 
+import com.javaapps.calculators.pojos.VATCalculator;
+
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Application {
 
+    private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
+
     public static void main(String[] args) {
+
         System.out.println("********** QUICK CALCULATOR **********");
-        displayHomeMenu();
+
+        try (Scanner menuInput = new Scanner(System.in)) {
+
+            displayHomeMenu(menuInput);
+
+        } catch (Exception e) {
+            LOGGER.severe(e.getLocalizedMessage());
+        }
     }
 
-    private static void displayHomeMenu() {
+    private static void displayHomeMenu(Scanner menuInput) {
+
         String homeView = """
-            1. VAT Calculator
-            2. NSSF Calculator
-            3. Loan Calculator
-            4. Exit
-            """;
+                          1. VAT Calculator
+                          2. NSSF Calculator
+                          3. Loan Calculator
+                          4. Exit
+                          """;
 
         System.out.println("\n" + homeView);
 
-        Scanner menuInput = new Scanner(System.in);
         int menuOption = menuInput.nextInt();
-        menuInput.close();
 
         switch (menuOption) {
-            case 1 -> calculateVAT();
-            case 2 -> calculateNSSF();
-            case 3 -> calculateLoan();
+            case 1 -> calculateVAT(menuInput);
+            case 2 -> calculateNSSF(menuInput);
+            case 3 -> calculateLoan(menuInput);
             case 4 -> System.out.println("Thank you!");
-            default -> throw new IllegalArgumentException("Unexpected value: " + menuOption);
+            default -> invalidOption();
         }
-        
+
     }
 
-    private static void calculateVAT() {
+    private static void calculateVAT(Scanner menuInput) {
+
         VATCalculator calculator = new VATCalculator();
 
         String vatView = """
 
-            VAT Calculator
-            1. Calculate Net Amount
-            2. Calculate Gross Amount
-            3. Calculate Rate Used
-            """;
+                         VAT Calculator
+                         1. Calculate Net Amount
+                         2. Calculate Gross Amount
+                         3. Calculate Rate Used
+                         """;
 
         System.out.println(vatView);
 
-        Scanner menuInput = new Scanner(System.in);
         int vatOption = menuInput.nextInt();
-        menuInput.close();
 
         switch (vatOption) {
             case 1 -> {
@@ -77,24 +88,29 @@ public class Application {
 
                 calculator.calculateRate();
             }
-            default -> throw new IllegalArgumentException("Unexpected VAT option: " + vatOption);
+            default -> invalidOption();
+
         }
 
-        String output = String.format("%s %-15.2f %s %-15.2f %s %-15.2f %s %-15.2f", "Amount: ", calculator
-            .getGrossAmount(), "VAT%: ", calculator.getRate() * 100,
-            "VAT: ", calculator.getVat(), "Net Amount: ", calculator.getNetAmount());
+        String output = String.format("%s %-15.2f %s %-15.2f %s %-15.2f %s %-15.2f", "Amount: ",
+                calculator.getGrossAmount(), "VAT%: ", calculator.getRate() * 100, "VAT: ", calculator.getVat(), "Net Amount: ", calculator.getNetAmount());
 
         System.out.println(output);
 
-        displayHomeMenu();
+        displayHomeMenu(menuInput);
     }
 
-    private static void calculateNSSF() {
+    private static void calculateNSSF(Scanner menuInput) {
 
     }
 
-    private static void calculateLoan() {
+    private static void calculateLoan(Scanner menuInput) {
 
+    }
+
+    private static void invalidOption() {
+
+        System.out.println("Invalid option!");
     }
 
 }

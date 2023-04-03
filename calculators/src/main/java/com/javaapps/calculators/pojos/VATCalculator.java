@@ -35,14 +35,14 @@ public class VATCalculator {
     }
 
     public void calculateNetAmount() {
-        this.vat = 0.18;
-        this.netAmount = this.grossAmount / (1 + this.vat);
+        this.rate = 0.18;
+        this.netAmount = this.grossAmount / (1 + this.rate);
         this.vat = this.grossAmount - this.netAmount;
     }
 
     public void calculateGrossAmount() {
-        this.vat = 0.18;
-        this.vat = this.netAmount + (this.netAmount * this.vat);
+        this.rate = 0.18;
+        this.vat = this.netAmount + (this.netAmount * this.rate);
         this.grossAmount = this.grossAmount + this.vat;
     }
 
