@@ -65,4 +65,9 @@ public class NSSFCalculator {
         return this.employerContribution + this.employeeContribution;
     }
 
+    public double getNetPay() {
+
+        return this.grossPay - this.employeeContribution;
+    }
+
 }
