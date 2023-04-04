@@ -31,6 +31,7 @@ public class Application {
     private static void displayHomeMenu(Scanner menuInput) {
 
         String homeView = """
+                          
                           1. VAT Calculator
                           2. NSSF Calculator
                           3. Loan Calculator
@@ -211,6 +212,7 @@ public class Application {
                 calculator.setAmount(amount);
 
                 calculator.calculateRate();
+
             }
             case 3 -> {
                 System.out.print("\nEnter rate per month (%): ");
@@ -224,6 +226,7 @@ public class Application {
                 calculator.setAmount(amount);
 
                 calculator.calculatePrincipal();
+
             }
             case 4 -> displayHomeMenu(menuInput);
             default -> invalidOption(menuInput);
@@ -237,6 +240,8 @@ public class Application {
                 .getTime(), "Amount: ", calculator.getAmount());
 
         System.out.println(output);
+
+        LoanSchedule.getLoanSchedule(menuInput, calculator);
 
         displayHomeMenu(menuInput);
 
