@@ -6,7 +6,7 @@ public class LoanCalculator {
 
     private double amount;
 
-    private double term; // in years
+    private double term; // in months
 
     private double rate;
 
