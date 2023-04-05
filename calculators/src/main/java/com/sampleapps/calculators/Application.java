@@ -1,10 +1,10 @@
-package com.javaapps.calculators;
+package com.sampleapps.calculators;
 
-import com.javaapps.calculators.pojos.LoanCalculator;
-import com.javaapps.calculators.pojos.NSSFCalculator;
-import com.javaapps.calculators.pojos.TimeOption;
-import com.javaapps.calculators.pojos.VATCalculator;
-import com.javaapps.calculators.statics.TimeInterval;
+import com.sampleapps.calculators.pojos.LoanCalculator;
+import com.sampleapps.calculators.pojos.NSSFCalculator;
+import com.sampleapps.calculators.pojos.TimeOption;
+import com.sampleapps.calculators.pojos.VATCalculator;
+import com.sampleapps.calculators.statics.TimeInterval;
 
 import java.util.Scanner;
 import java.util.logging.Logger;

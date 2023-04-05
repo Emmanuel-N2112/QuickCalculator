@@ -1,13 +1,34 @@
-# Quick Calculator
-Simple java application that performs common computations in the finance enterprises
+# Sample Java Applications
 
-![Screenshot 2023-03-20 at 18 45 00](https://user-images.githubusercontent.com/39821739/226393158-c00fa47c-914c-4e34-a237-c02d9bfea3c5.png)
+This repository contains a set of sample applications in java.
 
-## VAT Calculator
-Determines a price before VAT (Net Amount), a VAT rate, or a price that is VAT inclusive (Gross Amount). 
+## Prerequisites
 
-![Screenshot 2023-03-20 at 18 44 25](https://user-images.githubusercontent.com/39821739/226392899-2b75e0b7-40bb-43a1-a001-ca8490a3b6cb.png)
+We assume that the reader is at least vaguely familiar with Java and understands:
+- Variables and expressions
+- Methods
+- Decision structures
+- Iteration structures
 
-## NSSF Calculator
+## Requirements
 
-## Loan Calculator
+To compile and run this demo you will need:
+
+- JDK 11+
+- GraalVM
+
+
+### Configuring GraalVM and JDK 11+
+
+Make sure that both the `GRAALVM_HOME` and `JAVA_HOME` environment variables have
+been set, and that a JDK 11+ `java` command is on the path.
+
+## Contributions
+
+See [CONTRIBUTING](CONTRIBUTING.md) for how to build these examples.
+
+## Application List
+
+* [Calculators](./calculators): Calculator Application.
+
+Have fun, and join the team of contributors!
