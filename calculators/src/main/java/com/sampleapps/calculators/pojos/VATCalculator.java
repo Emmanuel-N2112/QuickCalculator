@@ -1,4 +1,4 @@
-package com.javaapps.calculators.pojos;
+package com.sampleapps.calculators.pojos;
 
 public class VATCalculator {
 

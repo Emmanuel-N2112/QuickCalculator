@@ -1,6 +1,6 @@
-package com.javaapps.calculators.pojos;
+package com.sampleapps.calculators.pojos;
 
-import com.javaapps.calculators.statics.TimeInterval;
+import com.sampleapps.calculators.statics.TimeInterval;
 
 public class TimeOption {
 

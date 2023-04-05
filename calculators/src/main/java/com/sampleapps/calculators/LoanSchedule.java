@@ -1,7 +1,7 @@
-package com.javaapps.calculators;
+package com.sampleapps.calculators;
 
-import com.javaapps.calculators.pojos.LoanCalculator;
-import com.javaapps.calculators.statics.TimeInterval;
+import com.sampleapps.calculators.pojos.LoanCalculator;
+import com.sampleapps.calculators.statics.TimeInterval;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

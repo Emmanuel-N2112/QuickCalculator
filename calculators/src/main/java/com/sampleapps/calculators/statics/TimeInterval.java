@@ -1,4 +1,4 @@
-package com.javaapps.calculators.statics;
+package com.sampleapps.calculators.statics;
 
 public enum TimeInterval {
 
