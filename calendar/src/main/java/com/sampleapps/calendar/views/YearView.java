@@ -12,6 +12,8 @@ public class YearView {
 
     private static final String OUTPUT_FORMAT = "%10s";
 
+    private YearView() {}
+
     public static void displayYear(Scanner menuInput) {
 
         System.out.print("\nEnter year (> 1900): ");
@@ -52,8 +54,14 @@ public class YearView {
                             .forEach(cWeek -> {
                                 System.out.println();
                                 cWeek.getDays()
-                                        .forEach(cDay -> System.out.print(String.format(OUTPUT_FORMAT,
-                                                cDay.getDayOfMonth() + " ")));
+                                        .forEach(cDay -> {
+                                            if (Boolean.FALSE.equals(cDay.getDisabled())) {
+                                                System.out.print(String.format(OUTPUT_FORMAT,
+                                                        cDay.getDayOfMonth() + " "));
+                                            } else {
+                                                System.out.print(String.format(OUTPUT_FORMAT, " "));
+                                            }
+                                        });
                             });
 
                     System.out.println();

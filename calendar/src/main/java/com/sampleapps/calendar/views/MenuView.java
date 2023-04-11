@@ -21,7 +21,7 @@ public class MenuView {
 
         switch (menuOption) {
             case 1 -> YearView.displayYear(menuInput);
-            case 2 -> System.out.println("********** Thank you! **********");
+            case 2 -> MonthView.displayMonth(menuInput);
             case 3 -> System.out.println("********** Thank you! **********");
             case 4 -> System.out.println("********** Thank you! **********");
             default -> invalidOption(menuInput);
