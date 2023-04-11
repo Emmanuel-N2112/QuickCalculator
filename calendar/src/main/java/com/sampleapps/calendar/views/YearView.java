@@ -2,7 +2,6 @@ package com.sampleapps.calendar.views;
 
 import com.sampleapps.calendar.dto.CMonth;
 
-import java.time.DayOfWeek;
 import java.time.Month;
 import java.time.format.TextStyle;
 import java.util.Arrays;
@@ -34,9 +33,14 @@ public class YearView {
 
                     System.out.println();
 
-                    Arrays.stream(DayOfWeek.values())
-                            .forEach(dayOfWeek -> System.out.print(String.format(OUTPUT_FORMAT,
-                                    dayOfWeek.getDisplayName(TextStyle.SHORT, locale) + "  ")));
+                    cMonth.getFirstDayOfWeek();
+
+                    for (int i = 0; i < 7; i++) {
+                        System.out.print(String.format(OUTPUT_FORMAT, cMonth.getFirstDayOfWeek()
+                                                                              .plus(i)
+                                                                              .getDisplayName(TextStyle.SHORT,
+                                                                                      locale) + "  "));
+                    }
 
                     System.out.println();
 
@@ -55,6 +59,8 @@ public class YearView {
                     System.out.println();
 
                 });
+
+        MenuView.displayHomeMenu(menuInput);
 
     }
 

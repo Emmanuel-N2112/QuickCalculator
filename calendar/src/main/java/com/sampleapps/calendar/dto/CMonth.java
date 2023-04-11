@@ -1,5 +1,6 @@
 package com.sampleapps.calendar.dto;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.TextStyle;
@@ -16,6 +17,8 @@ public class CMonth {
     private Month month;
 
     private Locale locale;
+
+    private DayOfWeek firstDayOfWeek;
 
     private List<CHoliday> holidays = new ArrayList<>();
 
@@ -46,7 +49,14 @@ public class CMonth {
 
     public void setLocale(Locale locale) {
 
+        this.firstDayOfWeek = WeekFields.of(locale)
+                .getFirstDayOfWeek();
         this.locale = locale;
+    }
+
+    public DayOfWeek getFirstDayOfWeek() {
+
+        return firstDayOfWeek;
     }
 
     public List<CWeek> getWeeks() {
@@ -77,7 +87,9 @@ public class CMonth {
                     .getDisplayName(TextStyle.FULL, this.locale));
             day.setDisabled(startWeekOfFirst.getMonthValue() != startMonthDate.getMonthValue());
 
-            if (startWeekOfFirst.get(weekFields.weekOfYear()) != weekOfYear) {
+            if (day.getDate()
+                        .get(weekFields.weekOfWeekBasedYear()) != weekOfYear) {
+
                 CWeek cWeek = new CWeek();
                 cWeek.setWeek(day.getDate()
                         .get(weekFields.weekOfWeekBasedYear()));
@@ -86,13 +98,14 @@ public class CMonth {
 
                 weekList.add(cWeek);
 
-                weekOfYear = startWeekOfFirst.get(weekFields.weekOfYear());
+                weekOfYear = day.getDate()
+                        .get(weekFields.weekOfWeekBasedYear());
 
             } else {
-                LocalDate finalStartWeekOfFirst = startWeekOfFirst;
 
                 weekList.stream()
-                        .filter(cWeek -> cWeek.getWeek() == finalStartWeekOfFirst.get(weekFields.weekOfWeekBasedYear()))
+                        .filter(cWeek -> cWeek.getWeek() == day.getDate()
+                                .get(weekFields.weekOfWeekBasedYear()))
                         .findAny()
                         .ifPresent(cWeek -> cWeek.getDays()
                                 .add(day));
