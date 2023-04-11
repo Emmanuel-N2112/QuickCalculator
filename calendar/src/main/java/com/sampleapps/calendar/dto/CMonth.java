@@ -77,14 +77,7 @@ public class CMonth {
 
         while (startWeekOfFirst.isBefore(endWeekOfLast)) {
 
-            CDay day = new CDay();
-            day.setDate(startWeekOfFirst);
-            day.setDayOfMonth(startWeekOfFirst.getDayOfMonth());
-            day.setDayOfYear(startWeekOfFirst.getDayOfYear());
-            day.setShortDate(startWeekOfFirst.getDayOfWeek()
-                    .getDisplayName(TextStyle.SHORT, this.locale));
-            day.setDay(startWeekOfFirst.getDayOfWeek()
-                    .getDisplayName(TextStyle.FULL, this.locale));
+            CDay day = CDay.createDay(startWeekOfFirst, this.locale);
             day.setDisabled(startWeekOfFirst.getMonthValue() != startMonthDate.getMonthValue());
 
             if (day.getDate()

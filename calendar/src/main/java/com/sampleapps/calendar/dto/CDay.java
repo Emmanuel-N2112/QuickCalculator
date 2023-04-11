@@ -1,6 +1,8 @@
 package com.sampleapps.calendar.dto;
 
 import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class CDay {
 
@@ -76,4 +78,18 @@ public class CDay {
         isDisabled = disabled;
     }
 
+    public static CDay createDay(LocalDate date, Locale locale) {
+
+        CDay cDay = new CDay();
+        cDay.setDate(date);
+        cDay.setDayOfMonth(date.getDayOfMonth());
+        cDay.setDayOfYear(date.getDayOfYear());
+        cDay.setShortDate(date.getDayOfWeek()
+                .getDisplayName(TextStyle.SHORT, locale));
+        cDay.setDay(date.getDayOfWeek()
+                .getDisplayName(TextStyle.FULL, locale));
+        cDay.setDisabled(false);
+
+        return cDay;
+    }
 }

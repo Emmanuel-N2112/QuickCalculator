@@ -27,7 +27,7 @@ public class MenuView {
             case 2 -> MonthView.displayMonth(menuInput);
             case 3 -> DateView.goToToday(menuInput);
             case 4 -> DateView.viewDate(menuInput);
-            case 5 -> DateView.viewDate(menuInput);
+            case 5 -> HolidayView.holidayMenu(menuInput);
             case 6 -> DateView.viewDate(menuInput);
             case 7 -> System.out.println("********** Thank you! **********");
             default -> invalidOption(menuInput);

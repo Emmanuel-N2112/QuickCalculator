@@ -1,6 +1,9 @@
 package com.sampleapps.calendar.views;
 
+import com.sampleapps.calendar.dictionary.UGHoliday;
+import com.sampleapps.calendar.dictionary.USHoliday;
 import com.sampleapps.calendar.dto.CMonth;
+import com.sampleapps.calendar.util.PrintOption;
 
 import java.time.Month;
 import java.time.format.TextStyle;
@@ -14,6 +17,9 @@ public class MonthView {
     private MonthView() {}
 
     public static void displayMonth(Scanner menuInput) {
+
+        System.out.print("\nEnter country (UG/US): ");
+        String countryCode = menuInput.next();
 
         System.out.print("\nEnter year (> 1900): ");
         int year = menuInput.nextInt();
@@ -44,9 +50,7 @@ public class MonthView {
 
         System.out.println();
 
-        for (int i = 0; i < 35; i++) {
-            System.out.print("--");
-        }
+        PrintOption.printDottedLine(35);
 
         cMonth.getWeeks()
                 .forEach(cWeek -> {
@@ -64,8 +68,59 @@ public class MonthView {
 
         System.out.println();
 
+        displayHolidays(countryCode, cMonth);
+
         MenuView.displayHomeMenu(menuInput);
 
+    }
+
+    private static void displayHolidays(String countryCode, CMonth month) {
+
+        System.out.println("\nPublic Holidays" .toUpperCase());
+
+        String output = "\n%s %30s";
+
+        System.out.printf(output, "Date", "Name");
+
+        PrintOption.printDottedLine(30);
+
+        if (countryCode.equalsIgnoreCase("UG")) {
+            UGHoliday ugHoliday = new UGHoliday();
+            ugHoliday.setYear(month.getYear());
+            ugHoliday.setLocale(month.getLocale());
+            ugHoliday.populateStaticNationalHolidays()
+                    .stream()
+                    .filter(cHoliday -> cHoliday.getDay()
+                            .getDate()
+                            .getMonth()
+                            .equals(month.getMonth()))
+                    .forEach(cHoliday -> {
+                        System.out.printf(output, cHoliday.getDay()
+                                .getDate(), cHoliday.getName());
+
+                    });
+
+        } else if (countryCode.equalsIgnoreCase("US")) {
+            USHoliday usHoliday = new USHoliday();
+            usHoliday.setYear(month.getYear());
+            usHoliday.setLocale(month.getLocale());
+            usHoliday.populateStaticNationalHolidays()
+                    .stream()
+                    .filter(cHoliday -> cHoliday.getDay()
+                            .getDate()
+                            .getMonth()
+                            .equals(month.getMonth()))
+                    .forEach(cHoliday -> {
+                        System.out.printf(output, cHoliday.getDay()
+                                .getDate(), cHoliday.getName());
+
+                    });
+
+        } else {
+            System.out.println("\nInvalid country code!");
+        }
+
+        System.out.println();
     }
 
 }

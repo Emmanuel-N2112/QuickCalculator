@@ -28,7 +28,8 @@ public class HolidayView {
                           Select Holiday Rule
                           1. The holiday falls on the same month and date each year.
                           2. If the actual holiday falls on a Saturday, provide a day off on the preceding Friday; if the holiday falls on a Sunday, then provide a day off on the Monday after the holiday.
-                                                 
+                          3. Combine both
+                          
                           """;
 
         System.out.println(holidayView);
