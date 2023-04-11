@@ -113,6 +113,16 @@ public class HolidayDate {
         return startDate;
     }
 
+    public static LocalDate getWomenDay(int year) {
+
+        return LocalDate.of(year, 3, 8);
+    }
+
+    public static LocalDate getObservedWomenDay(int year) {
+
+        return roundDate(getWomenDay(year));
+    }
+
     private static LocalDate roundDate(LocalDate date) {
 
         if (date.getDayOfWeek()

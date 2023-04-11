@@ -5,10 +5,12 @@ import com.sampleapps.calendar.dto.CHoliday;
 import com.sampleapps.calendar.statics.HolidayNames;
 import com.sampleapps.calendar.util.HolidayDate;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -28,11 +30,23 @@ public class UGHoliday {
         return NAME;
     }
 
-    public List<CHoliday> populateStaticNationalHolidays() {
+    public List<CHoliday> getPublicHolidays() {
+
+        List<CHoliday> holidays = new ArrayList<>();
+        holidays.addAll(populateStaticNationalHolidays());
+        holidays.addAll(populateDynamicNationalHolidays());
+
+        Collections.sort(holidays);
+
+        return holidays;
+    }
+
+    protected List<CHoliday> populateStaticNationalHolidays() {
 
         List<CHoliday> holidays = new ArrayList<>();
         holidays.add(addHoliday(HolidayNames.NEW_YEAR, HolidayDate.getNewYears(this.year)));
         holidays.add(addHoliday(HolidayNames.VALENTINE, HolidayDate.getValentineDay(this.year)));
+        holidays.add(addHoliday(HolidayNames.WOMEN_DAY, HolidayDate.getWomenDay(this.year)));
         holidays.add(addHoliday(HolidayNames.GOOD_FRIDAY, HolidayDate.getGoodFriday(this.year)));
         holidays.add(addHoliday(HolidayNames.EASTER, HolidayDate.getEasterDay(this.year)));
         holidays.add(addHoliday(HolidayNames.EASTER_MONDAY, HolidayDate.getEasterMonday(this.year)));
@@ -44,20 +58,20 @@ public class UGHoliday {
 
     }
 
-    public List<CHoliday> populateDynamicNationalHolidays() {
+    protected List<CHoliday> populateDynamicNationalHolidays() {
 
         List<CHoliday> holidays = new ArrayList<>();
         // Mother's Day - 2nd Monday of every May
-        holidays.add(addHoliday(HolidayNames.MOTHER_DAY, HolidayDate.getDynamicHoliday(this.year, Month.MAY
-                , 2, DayOfWeek.MONDAY)));
+        holidays.add(addHoliday(HolidayNames.MOTHER_DAY, HolidayDate.getDynamicHoliday(this.year, Month.MAY, 2,
+                DayOfWeek.MONDAY)));
 
         // Father's Day:	3rd Sunday in June
-        holidays.add(addHoliday(HolidayNames.FATHER_DAY, HolidayDate.getDynamicHoliday(this.year,
-                Month.JUNE, 3, DayOfWeek.SUNDAY)));
+        holidays.add(addHoliday(HolidayNames.FATHER_DAY, HolidayDate.getDynamicHoliday(this.year, Month.JUNE, 3,
+                DayOfWeek.SUNDAY)));
 
         // Labor Day:	1st Monday in September
-        holidays.add(addHoliday(HolidayNames.LABOUR, HolidayDate.getDynamicHoliday(this.year,
-                Month.SEPTEMBER, 1, DayOfWeek.MONDAY)));
+        holidays.add(addHoliday(HolidayNames.LABOUR, HolidayDate.getDynamicHoliday(this.year, Month.SEPTEMBER, 1,
+                DayOfWeek.MONDAY)));
 
         return holidays;
 

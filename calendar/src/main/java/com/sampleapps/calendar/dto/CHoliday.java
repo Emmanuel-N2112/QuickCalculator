@@ -1,6 +1,8 @@
 package com.sampleapps.calendar.dto;
 
-public class CHoliday {
+import com.sampleapps.calendar.dictionary.UGHoliday;
+
+public class CHoliday implements Comparable<CHoliday> {
 
     private String id;
 
@@ -60,6 +62,16 @@ public class CHoliday {
     public void setDay(CDay day) {
 
         this.day = day;
+    }
+
+    @Override
+    public int compareTo(CHoliday o) {
+
+        return this.getDay()
+                       .getDate()
+                       .getDayOfYear() - o.getDay()
+                       .getDate()
+                       .getDayOfYear();
     }
 
 }

@@ -88,7 +88,7 @@ public class YearView {
             UGHoliday ugHoliday = new UGHoliday();
             ugHoliday.setYear(year);
             ugHoliday.setLocale(locale);
-            ugHoliday.populateStaticNationalHolidays()
+            ugHoliday.getPublicHolidays()
                     .forEach(cHoliday -> {
                         System.out.printf(output, cHoliday.getDay()
                                 .getDate(), cHoliday.getName());

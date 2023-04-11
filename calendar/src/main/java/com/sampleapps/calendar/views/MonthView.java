@@ -88,7 +88,7 @@ public class MonthView {
             UGHoliday ugHoliday = new UGHoliday();
             ugHoliday.setYear(month.getYear());
             ugHoliday.setLocale(month.getLocale());
-            ugHoliday.populateStaticNationalHolidays()
+            ugHoliday.getPublicHolidays()
                     .stream()
                     .filter(cHoliday -> cHoliday.getDay()
                             .getDate()
