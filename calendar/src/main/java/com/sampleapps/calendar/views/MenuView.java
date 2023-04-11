@@ -1,5 +1,6 @@
 package com.sampleapps.calendar.views;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MenuView {
@@ -7,6 +8,8 @@ public class MenuView {
     private MenuView() {}
 
     public static void displayHomeMenu(Scanner menuInput) {
+
+        Locale locale = Locale.US;
 
         String homeView = """                       
                           1. View Year
@@ -23,12 +26,12 @@ public class MenuView {
         int menuOption = menuInput.nextInt();
 
         switch (menuOption) {
-            case 1 -> YearView.displayYear(menuInput);
-            case 2 -> MonthView.displayMonth(menuInput);
-            case 3 -> DateView.goToToday(menuInput);
-            case 4 -> DateView.viewDate(menuInput);
-            case 5 -> HolidayView.holidayMenu(menuInput);
-            case 6 -> DateView.viewDate(menuInput);
+            case 1 -> YearView.displayYear(menuInput, locale);
+            case 2 -> MonthView.displayMonth(menuInput, locale);
+            case 3 -> DateView.goToToday(menuInput, locale);
+            case 4 -> DateView.viewDate(menuInput, locale);
+            case 5 -> HolidayView.holidayMenu(menuInput, locale);
+            case 6 -> DateView.viewDate(menuInput, locale);
             case 7 -> System.out.println("********** Thank you! **********");
             default -> invalidOption(menuInput);
         }

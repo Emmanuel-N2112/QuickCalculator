@@ -5,7 +5,6 @@ import com.sampleapps.calendar.dto.CHoliday;
 import com.sampleapps.calendar.statics.HolidayNames;
 import com.sampleapps.calendar.util.HolidayDate;
 
-import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;

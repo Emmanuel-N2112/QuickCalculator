@@ -16,7 +16,7 @@ public class MonthView {
 
     private MonthView() {}
 
-    public static void displayMonth(Scanner menuInput) {
+    public static void displayMonth(Scanner menuInput, Locale locale) {
 
         System.out.print("\nEnter country (UG/US): ");
         String countryCode = menuInput.next();
@@ -26,8 +26,6 @@ public class MonthView {
 
         System.out.print("\nEnter month (enter digit): ");
         int month = menuInput.nextInt();
-
-        Locale locale = Locale.US;
 
         System.out.println("\nYEAR: " + year);
 
@@ -78,9 +76,9 @@ public class MonthView {
 
         System.out.println("\nPublic Holidays" .toUpperCase());
 
-        String output = "\n%s %30s";
+        String output = "\n%s \t \t \t%s";
 
-        System.out.printf(output, "Date", "Name");
+        System.out.printf("%n%s \t \t \t \t%s", "Date", "Name");
 
         PrintOption.printDottedLine(30);
 

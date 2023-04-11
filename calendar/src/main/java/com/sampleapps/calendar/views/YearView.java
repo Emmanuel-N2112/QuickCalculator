@@ -17,15 +17,13 @@ public class YearView {
 
     private YearView() {}
 
-    public static void displayYear(Scanner menuInput) {
+    public static void displayYear(Scanner menuInput, Locale locale) {
 
         System.out.print("\nEnter country (UG/US): ");
         String countryCode = menuInput.next();
 
         System.out.print("\nEnter year (> 1900): ");
         int year = menuInput.nextInt();
-
-        Locale locale = Locale.US;
 
         System.out.println("\nYEAR: " + year);
 
@@ -78,11 +76,11 @@ public class YearView {
 
         System.out.println("\nPublic Holidays".toUpperCase());
 
-        String output = "\n%s %30s";
+        String output = "\n%s \t \t \t%s";
 
-        System.out.printf(output, "Date", "Name");
+        System.out.printf("%n%s \t \t \t \t%s", "Date", "Name");
 
-        PrintOption.printDottedLine(30);
+        PrintOption.printDottedLine(20);
 
         if (countryCode.equalsIgnoreCase("UG")) {
             UGHoliday ugHoliday = new UGHoliday();

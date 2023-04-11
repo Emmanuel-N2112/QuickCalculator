@@ -21,7 +21,7 @@ public class HolidayView {
 
     private HolidayView() {}
 
-    public static void holidayMenu(Scanner menuInput) {
+    public static void holidayMenu(Scanner menuInput, Locale locale) {
 
         String holidayView = """
                                                     
@@ -37,23 +37,6 @@ public class HolidayView {
         int holidayOption = menuInput.nextInt();
 
         MenuView.displayHomeMenu(menuInput);
-
-    }
-
-    private static LocalDate stringToLocalDate(String datetime) {
-
-        final String DATE_FORMATS = "[yyyy-MM-dd][dd/MM/yyyy]";
-
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATS);
-
-            return LocalDate.parse(datetime, formatter);
-
-        } catch (Exception e) {
-            LOGGER.severe(String.format("Error formatting date! %s", e.getLocalizedMessage()));
-        }
-
-        return null;
 
     }
 

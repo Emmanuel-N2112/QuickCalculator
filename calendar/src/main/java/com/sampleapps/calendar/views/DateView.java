@@ -1,13 +1,15 @@
 package com.sampleapps.calendar.views;
 
 import com.sampleapps.calendar.dto.CMonth;
+import com.sampleapps.calendar.util.PrintOption;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Logger;
+
+import static com.sampleapps.calendar.util.TimeConverter.stringToLocalDate;
 
 public class DateView {
 
@@ -21,33 +23,31 @@ public class DateView {
 
     private DateView() {}
 
-    public static void goToToday(Scanner menuInput) {
+    public static void goToToday(Scanner menuInput, Locale locale) {
 
         LocalDate goToDate = LocalDate.now();
 
-        displayDate(goToDate);
+        displayDate(goToDate, locale);
 
         MenuView.displayHomeMenu(menuInput);
 
     }
 
-    public static void viewDate(Scanner menuInput) {
+    public static void viewDate(Scanner menuInput, Locale locale) {
 
         System.out.print("\nEnter date ([yyyy-MM-dd][dd/MM/yyyy]): ");
         String dateInput = menuInput.next();
 
-        LocalDate goToDate = stringToLocalDate(dateInput);
+        LocalDate goToDate = stringToLocalDate(dateInput, locale);
 
         assert goToDate != null;
-        displayDate(goToDate);
+        displayDate(goToDate, locale);
 
         MenuView.displayHomeMenu(menuInput);
 
     }
 
-    private static void displayDate(LocalDate goToDate) {
-
-        Locale locale = Locale.US;
+    private static void displayDate(LocalDate goToDate, Locale locale) {
 
         System.out.println("\nYEAR: " + goToDate.getYear());
 
@@ -69,11 +69,7 @@ public class DateView {
                                                                           locale) + "  "));
         }
 
-        System.out.println();
-
-        for (int i = 0; i < 35; i++) {
-            System.out.print("--");
-        }
+        PrintOption.printDottedLine(35);
 
         cMonth.getWeeks()
                 .forEach(cWeek -> {
@@ -95,23 +91,6 @@ public class DateView {
                 });
 
         System.out.println();
-    }
-
-    private static LocalDate stringToLocalDate(String datetime) {
-
-        final String DATE_FORMATS = "[yyyy-MM-dd][dd/MM/yyyy]";
-
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATS);
-
-            return LocalDate.parse(datetime, formatter);
-
-        } catch (Exception e) {
-            LOGGER.severe(String.format("Error formatting date! %s", e.getLocalizedMessage()));
-        }
-
-        return null;
-
     }
 
 }

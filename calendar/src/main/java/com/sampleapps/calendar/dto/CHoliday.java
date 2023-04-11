@@ -1,7 +1,5 @@
 package com.sampleapps.calendar.dto;
 
-import com.sampleapps.calendar.dictionary.UGHoliday;
-
 public class CHoliday implements Comparable<CHoliday> {
 
     private String id;
