@@ -1,5 +1,6 @@
 package com.sampleapps.calendar.dto;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
@@ -17,6 +18,26 @@ public class CDay {
     private Integer dayOfYear;
 
     private Boolean isDisabled;
+
+    private Boolean isWeekend;
+
+    public static CDay createDay(LocalDate date, Locale locale) {
+
+        CDay cDay = new CDay();
+        cDay.setDate(date);
+        cDay.setDayOfMonth(date.getDayOfMonth());
+        cDay.setDayOfYear(date.getDayOfYear());
+        cDay.setShortDate(date.getDayOfWeek()
+                .getDisplayName(TextStyle.SHORT, locale));
+        cDay.setDay(date.getDayOfWeek()
+                .getDisplayName(TextStyle.FULL, locale));
+        cDay.setDisabled(false);
+        cDay.setWeekend(date.getDayOfWeek()
+                                .equals(DayOfWeek.SUNDAY) || date.getDayOfWeek()
+                                .equals(DayOfWeek.SATURDAY));
+
+        return cDay;
+    }
 
     public LocalDate getDate() {
 
@@ -78,18 +99,14 @@ public class CDay {
         isDisabled = disabled;
     }
 
-    public static CDay createDay(LocalDate date, Locale locale) {
+    public Boolean getWeekend() {
 
-        CDay cDay = new CDay();
-        cDay.setDate(date);
-        cDay.setDayOfMonth(date.getDayOfMonth());
-        cDay.setDayOfYear(date.getDayOfYear());
-        cDay.setShortDate(date.getDayOfWeek()
-                .getDisplayName(TextStyle.SHORT, locale));
-        cDay.setDay(date.getDayOfWeek()
-                .getDisplayName(TextStyle.FULL, locale));
-        cDay.setDisabled(false);
-
-        return cDay;
+        return isWeekend;
     }
+
+    public void setWeekend(Boolean weekend) {
+
+        isWeekend = weekend;
+    }
+
 }

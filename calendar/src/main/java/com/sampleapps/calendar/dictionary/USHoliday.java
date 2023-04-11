@@ -9,6 +9,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -28,6 +29,17 @@ public class USHoliday {
     public String getName() {
 
         return NAME;
+    }
+
+    public List<CHoliday> getPublicHolidays() {
+
+        List<CHoliday> holidays = new ArrayList<>();
+        holidays.addAll(populateStaticNationalHolidays());
+        holidays.addAll(populateDynamicNationalHolidays());
+
+        Collections.sort(holidays);
+
+        return holidays;
     }
 
     public List<CHoliday> populateStaticNationalHolidays() {

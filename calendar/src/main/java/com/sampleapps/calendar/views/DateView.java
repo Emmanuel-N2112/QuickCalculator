@@ -1,6 +1,7 @@
 package com.sampleapps.calendar.views;
 
 import com.sampleapps.calendar.dto.CMonth;
+import com.sampleapps.calendar.statics.TextColor;
 import com.sampleapps.calendar.util.PrintOption;
 
 import java.time.LocalDate;
@@ -12,10 +13,6 @@ import java.util.logging.Logger;
 import static com.sampleapps.calendar.util.TimeConverter.stringToLocalDate;
 
 public class DateView {
-
-    public static final String ANSI_RESET = "\u001B[0m";
-
-    public static final String ANSI_GREEN = "\u001B[32m";
 
     private static final Logger LOGGER = Logger.getLogger(DateView.class.getName());
 
@@ -65,8 +62,7 @@ public class DateView {
         for (int i = 0; i < 7; i++) {
             System.out.print(String.format(OUTPUT_FORMAT, cMonth.getFirstDayOfWeek()
                                                                   .plus(i)
-                                                                  .getDisplayName(TextStyle.SHORT,
-                                                                          locale) + "  "));
+                                                                  .getDisplayName(TextStyle.SHORT, locale) + "  "));
         }
 
         PrintOption.printDottedLine(35);
@@ -77,10 +73,12 @@ public class DateView {
                     cWeek.getDays()
                             .forEach(cDay -> {
                                 if (Boolean.FALSE.equals(cDay.getDisabled())) {
+
                                     String output = cDay.getDate()
-                                            .equals(goToDate) ? ANSI_GREEN + String.format(OUTPUT_FORMAT,
-                                            cDay.getDayOfMonth() + " ") + ANSI_RESET : String.format(OUTPUT_FORMAT,
-                                            cDay.getDayOfMonth() + " ");
+                                            .equals(goToDate) ?
+                                            TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT,
+                                                    cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET :
+                                            String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ");
 
                                     System.out.print(output);
 

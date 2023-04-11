@@ -1,8 +1,7 @@
 package com.sampleapps.calendar.views;
 
-import com.sampleapps.calendar.dictionary.UGHoliday;
-import com.sampleapps.calendar.dictionary.USHoliday;
 import com.sampleapps.calendar.dto.CMonth;
+import com.sampleapps.calendar.statics.TextColor;
 import com.sampleapps.calendar.util.PrintOption;
 
 import java.time.Month;
@@ -10,6 +9,9 @@ import java.time.format.TextStyle;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
+
+import static com.sampleapps.calendar.util.HolidayUtility.displayHolidays;
+import static com.sampleapps.calendar.util.HolidayUtility.isHoliday;
 
 public class YearView {
 
@@ -54,8 +56,15 @@ public class YearView {
                                 cWeek.getDays()
                                         .forEach(cDay -> {
                                             if (Boolean.FALSE.equals(cDay.getDisabled())) {
-                                                System.out.print(String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() +
-                                                                                              " "));
+                                                String output =
+                                                        Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(isHoliday(countryCode, cDay.getDate(), locale)) ?
+                                                                TextColor.ANSI_BLUE + String.format(OUTPUT_FORMAT,
+                                                                        cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET :
+                                                                String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() +
+                                                                                             " ");
+
+                                                System.out.print(output);
+
                                             } else {
                                                 System.out.print(String.format(OUTPUT_FORMAT, " "));
                                             }
@@ -70,45 +79,6 @@ public class YearView {
 
         MenuView.displayHomeMenu(menuInput);
 
-    }
-
-    private static void displayHolidays(String countryCode, int year, Locale locale) {
-
-        System.out.println("\nPublic Holidays".toUpperCase());
-
-        String output = "\n%s \t \t \t%s";
-
-        System.out.printf("%n%s \t \t \t \t%s", "Date", "Name");
-
-        PrintOption.printDottedLine(20);
-
-        if (countryCode.equalsIgnoreCase("UG")) {
-            UGHoliday ugHoliday = new UGHoliday();
-            ugHoliday.setYear(year);
-            ugHoliday.setLocale(locale);
-            ugHoliday.getPublicHolidays()
-                    .forEach(cHoliday -> {
-                        System.out.printf(output, cHoliday.getDay()
-                                .getDate(), cHoliday.getName());
-
-                    });
-
-        } else if (countryCode.equalsIgnoreCase("US")) {
-            USHoliday usHoliday = new USHoliday();
-            usHoliday.setYear(year);
-            usHoliday.setLocale(locale);
-            usHoliday.populateStaticNationalHolidays()
-                    .forEach(cHoliday -> {
-                        System.out.printf(output, cHoliday.getDay()
-                                .getDate(), cHoliday.getName());
-
-                    });
-
-        } else {
-            System.out.println("\nInvalid country code!");
-        }
-
-        System.out.println();
     }
 
 }

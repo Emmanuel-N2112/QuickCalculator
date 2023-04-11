@@ -16,7 +16,7 @@ public class TimeConverter {
     public static String localDateToString(LocalDate date, Locale locale) {
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATS, locale);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM uuuu", locale);
 
             return date.atStartOfDay()
                     .format(formatter);
