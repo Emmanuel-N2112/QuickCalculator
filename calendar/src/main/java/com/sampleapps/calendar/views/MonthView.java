@@ -35,8 +35,6 @@ public class MonthView {
 
         System.out.println();
 
-        cMonth.getFirstDayOfWeek();
-
         for (int i = 0; i < 7; i++) {
             System.out.print(String.format(OUTPUT_FORMAT, cMonth.getFirstDayOfWeek()
                                                                   .plus(i)

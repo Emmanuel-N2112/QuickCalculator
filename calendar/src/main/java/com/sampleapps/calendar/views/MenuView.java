@@ -11,8 +11,11 @@ public class MenuView {
         String homeView = """                       
                           1. View Year
                           2. View Month
-                          3. Public Holiday
-                          4. Exit
+                          3. View today
+                          4. Go to date
+                          5. View Holidays
+                          6. Add Holiday
+                          7. Exit
                           """;
 
         System.out.println("\n" + homeView);
@@ -22,8 +25,11 @@ public class MenuView {
         switch (menuOption) {
             case 1 -> YearView.displayYear(menuInput);
             case 2 -> MonthView.displayMonth(menuInput);
-            case 3 -> System.out.println("********** Thank you! **********");
-            case 4 -> System.out.println("********** Thank you! **********");
+            case 3 -> DateView.goToToday(menuInput);
+            case 4 -> DateView.viewDate(menuInput);
+            case 5 -> DateView.viewDate(menuInput);
+            case 6 -> DateView.viewDate(menuInput);
+            case 7 -> System.out.println("********** Thank you! **********");
             default -> invalidOption(menuInput);
         }
 
