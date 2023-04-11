@@ -1,6 +1,6 @@
-package com.sampleapps.calculators.vews;
+package com.sampleapps.calculators.views;
 
-import com.sampleapps.calculators.pojos.NSSFCalculator;
+import com.sampleapps.calculators.dto.NSSFCalculator;
 
 import java.util.Scanner;
 

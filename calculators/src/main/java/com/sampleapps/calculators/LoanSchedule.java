@@ -1,6 +1,6 @@
 package com.sampleapps.calculators;
 
-import com.sampleapps.calculators.pojos.LoanCalculator;
+import com.sampleapps.calculators.dto.LoanCalculator;
 import com.sampleapps.calculators.statics.TimeInterval;
 
 import java.time.LocalDate;
@@ -93,7 +93,7 @@ public class LoanSchedule {
 
     private static void invalidOption() {
 
-        System.out.println("Invalid option!");
+        System.out.println("\nInvalid option!");
 
     }
 

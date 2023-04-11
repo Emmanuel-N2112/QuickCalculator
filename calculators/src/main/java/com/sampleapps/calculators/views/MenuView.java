@@ -1,4 +1,4 @@
-package com.sampleapps.calculators.vews;
+package com.sampleapps.calculators.views;
 
 import java.util.Scanner;
 

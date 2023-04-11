@@ -1,6 +1,6 @@
-package com.sampleapps.calculators.vews;
+package com.sampleapps.calculators.views;
 
-import com.sampleapps.calculators.pojos.VATCalculator;
+import com.sampleapps.calculators.dto.VATCalculator;
 
 import java.util.Scanner;
 

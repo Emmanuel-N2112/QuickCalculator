@@ -1,4 +1,4 @@
-package com.sampleapps.calculators.pojos;
+package com.sampleapps.calculators.dto;
 
 public class NSSFCalculator {
 

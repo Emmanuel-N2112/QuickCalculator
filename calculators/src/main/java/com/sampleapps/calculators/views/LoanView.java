@@ -1,8 +1,8 @@
-package com.sampleapps.calculators.vews;
+package com.sampleapps.calculators.views;
 
 import com.sampleapps.calculators.LoanSchedule;
-import com.sampleapps.calculators.pojos.LoanCalculator;
-import com.sampleapps.calculators.pojos.TimeOption;
+import com.sampleapps.calculators.dto.LoanCalculator;
+import com.sampleapps.calculators.dto.TimeOption;
 import com.sampleapps.calculators.statics.TimeInterval;
 
 import java.util.Scanner;
@@ -24,6 +24,7 @@ public class LoanView {
                           2. Determine Rate from given Amount
                           3. Determine Principal
                           4. Main Menu
+                          
                           """;
 
         System.out.println(loanView);
@@ -128,7 +129,7 @@ public class LoanView {
 
     private static void invalidOption(Scanner menuInput) {
 
-        System.out.println("Invalid option!");
+        System.out.println("\nInvalid option!");
 
         calculateLoan(menuInput);
     }
