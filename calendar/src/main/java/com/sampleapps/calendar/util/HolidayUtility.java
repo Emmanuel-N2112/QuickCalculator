@@ -7,8 +7,6 @@ import com.sampleapps.calendar.dto.CMonth;
 import java.time.LocalDate;
 import java.util.Locale;
 
-import static com.sampleapps.calendar.util.TimeConverter.localDateToString;
-
 public class HolidayUtility {
 
     private static final String PUBLIC_HOLIDAY = "\nPUBLIC HOLIDAYS";
@@ -36,7 +34,7 @@ public class HolidayUtility {
             ugHoliday.setLocale(locale);
             ugHoliday.getPublicHolidays()
                     .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, localDateToString(cHoliday.getDay()
+                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
                                 .getDate(), locale), cHoliday.getName());
 
                     });
@@ -47,7 +45,7 @@ public class HolidayUtility {
             usHoliday.setLocale(locale);
             usHoliday.getPublicHolidays()
                     .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, localDateToString(cHoliday.getDay()
+                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
                                 .getDate(), locale), cHoliday.getName());
 
                     });
@@ -74,7 +72,7 @@ public class HolidayUtility {
                             .getMonth()
                             .equals(month.getMonth()))
                     .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, localDateToString(cHoliday.getDay()
+                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
                                 .getDate(), month.getLocale()), cHoliday.getName());
 
                     });
@@ -90,7 +88,7 @@ public class HolidayUtility {
                             .getMonth()
                             .equals(month.getMonth()))
                     .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, localDateToString(cHoliday.getDay()
+                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
                                 .getDate(), month.getLocale()), cHoliday.getName());
 
                     });

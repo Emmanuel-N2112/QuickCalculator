@@ -1,20 +1,14 @@
 package com.sampleapps.calendar.views;
 
 import com.sampleapps.calendar.dto.CMonth;
-import com.sampleapps.calendar.statics.TextColor;
+import com.sampleapps.calendar.util.HolidayUtility;
 import com.sampleapps.calendar.util.PrintOption;
 
 import java.time.Month;
-import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static com.sampleapps.calendar.util.HolidayUtility.displayHolidays;
-import static com.sampleapps.calendar.util.HolidayUtility.isHoliday;
-
 public class MonthView {
-
-    private static final String OUTPUT_FORMAT = "%10s";
 
     private MonthView() {}
 
@@ -29,6 +23,12 @@ public class MonthView {
         System.out.print("\nEnter month (enter digit): ");
         int month = menuInput.nextInt();
 
+        printMonth(year, month, countryCode, locale);
+
+        MenuView.displayHomeMenu(menuInput);
+    }
+
+    private static void printMonth(int year, int month, String countryCode, Locale locale) {
         System.out.println("\nYEAR: " + year);
 
         CMonth cMonth = new CMonth();
@@ -36,44 +36,15 @@ public class MonthView {
         cMonth.setMonth(Month.of(month));
         cMonth.setLocale(locale);
 
-        System.out.println("\nMONTH: " + cMonth.getMonth()
-                .getDisplayName(TextStyle.FULL, locale));
+        PrintOption.printMonth(cMonth, locale);
 
-        System.out.println();
-
-        for (int i = 0; i < 7; i++) {
-            System.out.print(String.format(OUTPUT_FORMAT, cMonth.getFirstDayOfWeek()
-                                                                  .plus(i)
-                                                                  .getDisplayName(TextStyle.SHORT, locale) + "  "));
-        }
+        PrintOption.printDays(cMonth, locale);
 
         PrintOption.printDottedLine(35);
 
-        cMonth.getWeeks()
-                .forEach(cWeek -> {
-                    System.out.println();
-                    cWeek.getDays()
-                            .forEach(cDay -> {
-                                if (Boolean.FALSE.equals(cDay.getDisabled())) {
-                                    String output =
-                                            Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(isHoliday(countryCode, cDay.getDate(), locale)) ?
-                                                    TextColor.ANSI_BLUE + String.format(OUTPUT_FORMAT,
-                                                            cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET :
-                                                    String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ");
+        PrintOption.printDaysOfMonth(cMonth, countryCode, locale);
 
-                                    System.out.print(output);
-
-                                } else {
-                                    System.out.print(String.format(OUTPUT_FORMAT, " "));
-                                }
-                            });
-                });
-
-        System.out.println();
-
-        displayHolidays(countryCode, cMonth);
-
-        MenuView.displayHomeMenu(menuInput);
+        HolidayUtility.displayHolidays(countryCode, cMonth);
 
     }
 
