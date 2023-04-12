@@ -19,8 +19,7 @@ public class MenuView {
                 3. View today
                 4. Go to date
                 5. View Holidays
-                6. Add Holiday
-                7. Exit
+                6. Exit
                 """;
 
         System.out.println("\n" + homeView);
@@ -33,8 +32,7 @@ public class MenuView {
             case 3 -> DateView.goToToday(menuInput, locale);
             case 4 -> DateView.viewDate(menuInput, locale);
             case 5 -> HolidayView.holidayMenu(menuInput, locale);
-            case 6 -> DateView.viewDate(menuInput, locale);
-            case 7 -> System.out.println("********** Thank you! **********");
+            case 6 -> System.out.println("********** Thank you! **********");
             default -> invalidOption(menuInput);
         }
 

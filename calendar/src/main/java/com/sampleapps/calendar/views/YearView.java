@@ -50,7 +50,7 @@ public class YearView {
 
                 });
 
-        System.out.println("Holidays");
+        System.out.println("\nHolidays");
 
         HolidayDisplayUtility.displayHolidays(countryCode, year, locale);
     }

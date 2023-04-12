@@ -47,7 +47,7 @@ public class MonthView {
 
         PrintOption.printDaysOfMonth(cMonth, countryCode, locale);
 
-        System.out.println("Holidays");
+        System.out.println("\nHolidays");
 
         HolidayDisplayUtility.displayHolidays(countryCode, cMonth);
 
