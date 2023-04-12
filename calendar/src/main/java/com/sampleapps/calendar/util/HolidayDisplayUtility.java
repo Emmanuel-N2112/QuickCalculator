@@ -1,19 +1,19 @@
 package com.sampleapps.calendar.util;
 
-import com.sampleapps.calendar.dictionary.UGHoliday;
-import com.sampleapps.calendar.dictionary.USHoliday;
+import com.sampleapps.calendar.dictionary.countries.UGHoliday;
+import com.sampleapps.calendar.dictionary.countries.USHoliday;
 import com.sampleapps.calendar.dto.CMonth;
 
 import java.time.LocalDate;
 import java.util.Locale;
 
-public class HolidayUtility {
+public class HolidayDisplayUtility {
 
     private static final String PUBLIC_HOLIDAY = "\nPUBLIC HOLIDAYS";
 
     private static final String OUTPUT_FORMAT = "\n%-25s %s";
 
-    private HolidayUtility() {}
+    private HolidayDisplayUtility() {}
 
     private static void displayHeader() {
 
@@ -116,6 +116,7 @@ public class HolidayUtility {
         } else if (countryCode.equalsIgnoreCase("US")) {
             USHoliday usHoliday = new USHoliday();
             usHoliday.setYear(date.getYear());
+            usHoliday.setLocale(locale);
 
             return usHoliday.getPublicHolidays()
                     .stream()

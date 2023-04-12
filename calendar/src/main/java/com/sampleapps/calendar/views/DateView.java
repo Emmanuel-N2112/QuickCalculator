@@ -1,7 +1,7 @@
 package com.sampleapps.calendar.views;
 
 import com.sampleapps.calendar.dto.CMonth;
-import com.sampleapps.calendar.util.HolidayUtility;
+import com.sampleapps.calendar.util.HolidayDisplayUtility;
 import com.sampleapps.calendar.util.PrintOption;
 import com.sampleapps.calendar.util.TimeConverter;
 
@@ -65,7 +65,7 @@ public class DateView {
 
         PrintOption.printDaysOfMonth(goToDate, cMonth, countryCode, locale);
 
-        HolidayUtility.displayHolidays(countryCode, cMonth);
+        HolidayDisplayUtility.displayHolidays(countryCode, cMonth);
 
     }
 

@@ -41,13 +41,8 @@ public class PrintOption {
                     cWeek.getDays()
                             .forEach(cDay -> {
                                 if (Boolean.FALSE.equals(cDay.getDisabled())) {
-                                    String output =
-                                            Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(HolidayUtility.isHoliday(countryCode, cDay.getDate(), locale)) ?
-                                                    TextColor.ANSI_BLUE + String.format(OUTPUT_FORMAT,
-                                                            cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET :
-                                                    String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ");
 
-                                    System.out.print(output);
+                                    System.out.print(determineOutPutColor(cDay, LocalDate.now(), countryCode, locale));
 
                                 } else {
                                     System.out.print(String.format(OUTPUT_FORMAT, " "));
@@ -91,7 +86,7 @@ public class PrintOption {
 
         String output;
 
-        if (Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(HolidayUtility.isHoliday(countryCode,
+        if (Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(HolidayDisplayUtility.isHoliday(countryCode,
                 cDay.getDate(), locale))) {
             if (cDay.getDate()
                     .equals(goToDate)) {

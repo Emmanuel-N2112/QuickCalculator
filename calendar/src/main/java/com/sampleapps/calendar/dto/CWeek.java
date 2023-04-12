@@ -1,6 +1,5 @@
 package com.sampleapps.calendar.dto;
 
-import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.sampleapps.calendar.views;
 
 import com.sampleapps.calendar.dto.CMonth;
-import com.sampleapps.calendar.util.HolidayUtility;
+import com.sampleapps.calendar.util.HolidayDisplayUtility;
 import com.sampleapps.calendar.util.PrintOption;
 
 import java.time.Month;
@@ -48,7 +48,7 @@ public class YearView {
 
                 });
 
-        HolidayUtility.displayHolidays(countryCode, year, locale);
+        HolidayDisplayUtility.displayHolidays(countryCode, year, locale);
     }
 
 }
