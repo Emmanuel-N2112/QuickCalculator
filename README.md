@@ -30,5 +30,6 @@ See [CONTRIBUTING](CONTRIBUTING.md) for how to build these examples.
 ## Application List
 
 * [Calculators](./calculators): Calculator Application.
+* [Calendar](./calendar): Calendar Application.
 
 Have fun, and join the team of contributors!
