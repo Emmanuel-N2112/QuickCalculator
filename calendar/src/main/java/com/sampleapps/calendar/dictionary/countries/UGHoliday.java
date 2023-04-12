@@ -64,7 +64,7 @@ public class UGHoliday extends HolidayDictionary {
         holidays.add(addHoliday(HolidayNames.EASTER, HolidayTypes.NATIONAL, UGHolidayDate.getEasterDay(getYear())));
         holidays.add(addHoliday(HolidayNames.EASTER_MONDAY, HolidayTypes.NATIONAL, UGHolidayDate.getEasterMonday(getYear())));
         holidays.add(addHoliday(HolidayNames.LABOUR, HolidayTypes.NATIONAL, UGHolidayDate.getLabourDay(getYear())));
-        holidays.add(addHoliday(HolidayNames.HEROES, HolidayTypes.NATIONAL, UGHolidayDate.getLabourDay(getYear())));
+        holidays.add(addHoliday(HolidayNames.HEROES, HolidayTypes.NATIONAL, UGHolidayDate.getHeroesDay(getYear())));
         holidays.add(addHoliday(HolidayNames.MARTYR, HolidayTypes.NATIONAL, UGHolidayDate.getMartyrDay(getYear())));
         holidays.add(addHoliday(HolidayNames.INDEPENDENCE, HolidayTypes.NATIONAL, UGHolidayDate.getIndependenceDay(getYear())));
         holidays.add(addHoliday(HolidayNames.CHRISTMAS, HolidayTypes.NATIONAL, UGHolidayDate.getChristmas(getYear())));

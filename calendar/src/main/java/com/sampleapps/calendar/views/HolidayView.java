@@ -1,18 +1,16 @@
 package com.sampleapps.calendar.views;
 
+import com.sampleapps.calendar.dto.CMonth;
+import com.sampleapps.calendar.util.HolidayDisplayUtility;
+import com.sampleapps.calendar.util.PrintOption;
+
+import java.time.Month;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class HolidayView {
-
-    public static final String ANSI_RESET = "\u001B[0m";
-
-    public static final String ANSI_GREEN = "\u001B[32m";
-
-    private static final Logger LOGGER = Logger.getLogger(HolidayView.class.getName());
-
-    private static final String OUTPUT_FORMAT = "%10s";
 
     private HolidayView() {
 
@@ -33,8 +31,58 @@ public class HolidayView {
 
         int holidayOption = menuInput.nextInt();
 
+        System.out.print("\nEnter country (UG/US): ");
+        String countryCode = menuInput.next();
+
+        System.out.print("\nEnter year (> 1900): ");
+        int year = menuInput.nextInt();
+
+        System.out.println("\nYEAR: " + year);
+
+        if (holidayOption == 1) {
+            printHolidays(year, locale, countryCode);
+
+        } else if (holidayOption == 2) {
+            printObservedHolidays(year, locale, countryCode);
+
+        } else if (holidayOption == 3) {
+            printHolidays(year, locale, countryCode);
+            printObservedHolidays(year, locale, countryCode);
+
+        } else {
+            System.out.println("\nInvalid Option!");
+        }
+
         MenuView.displayHomeMenu(menuInput);
 
+    }
+
+    private static void printHolidays(int year, Locale locale, String countryCode) {
+        Arrays.stream(Month.values()).forEach(month -> {
+            CMonth cMonth = new CMonth();
+            cMonth.setYear(year);
+            cMonth.setMonth(month);
+            cMonth.setLocale(locale);
+
+            PrintOption.printMonth(cMonth, locale);
+
+            HolidayDisplayUtility.displayHolidays(countryCode, cMonth);
+
+        });
+    }
+
+    private static void printObservedHolidays(int year, Locale locale, String countryCode) {
+        Arrays.stream(Month.values()).forEach(month -> {
+            CMonth cMonth = new CMonth();
+            cMonth.setYear(year);
+            cMonth.setMonth(month);
+            cMonth.setLocale(locale);
+
+            PrintOption.printMonth(cMonth, locale);
+
+            HolidayDisplayUtility.displayObservedHolidays(countryCode, cMonth);
+
+        });
     }
 
 }

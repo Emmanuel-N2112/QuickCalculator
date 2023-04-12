@@ -36,6 +36,11 @@ public class UGHolidayDate implements GeneralHoliday {
         return LocalDate.of(year, Month.MAY, 1);
     }
 
+    public static LocalDate getHeroesDay(int year) {
+
+        return LocalDate.of(year, Month.JUNE, 9);
+    }
+
     public static LocalDate getMartyrDay(int year) {
 
         return LocalDate.of(year, Month.JUNE, 3);
