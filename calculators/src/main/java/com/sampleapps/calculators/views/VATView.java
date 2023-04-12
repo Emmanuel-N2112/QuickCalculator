@@ -1,14 +1,15 @@
-package com.sampleapps.calculators.vews;
+package com.sampleapps.calculators.views;
 
-import com.sampleapps.calculators.pojos.VATCalculator;
+import com.sampleapps.calculators.dto.VATCalculator;
 
 import java.util.Scanner;
 
 public class VATView {
 
-    private VATView() {}
-
     private static final String OUTPUT_FORMAT = "\n%s %-15.2f %s %-15.2f %s %-15.2f %s %-15.2f";
+
+    private VATView() {
+    }
 
     public static void calculateVAT(Scanner menuInput) {
 
@@ -16,12 +17,12 @@ public class VATView {
 
         String vatView = """
 
-                         VAT Calculator
-                         1. Calculate Net Amount
-                         2. Calculate Gross Amount
-                         3. Calculate Rate Used
-                         4. Main Menu
-                         """;
+                VAT Calculator
+                1. Calculate Net Amount
+                2. Calculate Gross Amount
+                3. Calculate Rate Used
+                4. Main Menu
+                """;
 
         System.out.println(vatView);
 
@@ -73,4 +74,5 @@ public class VATView {
 
         calculateVAT(menuInput);
     }
+
 }

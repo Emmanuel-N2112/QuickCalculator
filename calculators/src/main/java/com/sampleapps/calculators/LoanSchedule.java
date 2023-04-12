@@ -1,6 +1,6 @@
 package com.sampleapps.calculators;
 
-import com.sampleapps.calculators.pojos.LoanCalculator;
+import com.sampleapps.calculators.dto.LoanCalculator;
 import com.sampleapps.calculators.statics.TimeInterval;
 
 import java.time.LocalDate;
@@ -12,7 +12,8 @@ public class LoanSchedule {
 
     private static final Logger LOGGER = Logger.getLogger(LoanSchedule.class.getName());
 
-    private LoanSchedule() {}
+    private LoanSchedule() {
+    }
 
     public static void getLoanSchedule(Scanner menuInput, LoanCalculator loan) {
 
@@ -26,36 +27,37 @@ public class LoanSchedule {
             LocalDate disbursementDate = stringToLocalDate(dateInput);
             assert disbursementDate != null;
             LocalDate endDate = disbursementDate.plusMonths((long) loan.getTimeOption()
-                    .getTime());
+                                                                       .getTime());
 
             double principal = loan.getPrincipal() / loan.getTimeOption()
-                    .getTime();
+                                                         .getTime();
             double interest = loan.getInterest() / loan.getTimeOption()
-                    .getTime();
+                                                       .getTime();
             double lineAmount = principal + interest;
             double balance = loan.getAmount();
 
             TimeInterval interval = loan.getTimeOption()
-                    .getPeriod();
+                                        .getPeriod();
             switch (interval) {
                 case YEARLY -> endDate = disbursementDate.plusYears((long) loan.getTimeOption()
-                        .getTime());
+                                                                               .getTime());
                 case MONTHLY -> endDate = disbursementDate.plusMonths((long) loan.getTimeOption()
-                        .getTime());
+                                                                                 .getTime());
                 case WEEKLY -> endDate = disbursementDate.plusWeeks((long) loan.getTimeOption()
-                        .getTime());
+                                                                               .getTime());
                 case DAILY -> endDate = disbursementDate.plusDays((long) loan.getTimeOption()
-                        .getTime());
+                                                                             .getTime());
             }
 
-            System.out.printf("\n" + "%-15s %-15s %-15s %-15s %-15s%n", "Payment Date", "Amount", "Principal", "Interest", "Balance");
+            System.out.printf("\n" + "%-15s %-15s %-15s %-15s %-15s%n", "Payment Date", "Amount", "Principal",
+                    "Interest", "Balance");
 
             while (disbursementDate.isBefore(endDate)) {
 
                 balance = balance - lineAmount;
 
                 System.out.printf("\n" +
-                                  "%-15s %-15.2f %-15.2f %-15.2f %-15.2f", disbursementDate, lineAmount, principal,
+                                "%-15s %-15.2f %-15.2f %-15.2f %-15.2f", disbursementDate, lineAmount, principal,
                         interest, balance);
 
                 switch (interval) {
@@ -93,7 +95,7 @@ public class LoanSchedule {
 
     private static void invalidOption() {
 
-        System.out.println("Invalid option!");
+        System.out.println("\nInvalid option!");
 
     }
 

@@ -1,17 +1,17 @@
-package com.sampleapps.calculators;
+package com.sampleapps.calendar;
 
-import com.sampleapps.calculators.views.MenuView;
+import com.sampleapps.calendar.views.MenuView;
 
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-public class Application {
+public class Calendar {
 
-    private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Calendar.class.getName());
 
     public static void main(String[] args) {
 
-        System.out.println("********** QUICK CALCULATOR **********");
+        System.out.println("********** SIMPLE CALENDAR **********");
 
         try (Scanner menuInput = new Scanner(System.in)) {
 
@@ -21,5 +21,6 @@ public class Application {
             LOGGER.severe(e.getLocalizedMessage());
         }
     }
+
 
 }

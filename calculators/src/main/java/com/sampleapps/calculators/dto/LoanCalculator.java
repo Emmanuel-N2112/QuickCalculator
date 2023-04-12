@@ -1,4 +1,4 @@
-package com.sampleapps.calculators.pojos;
+package com.sampleapps.calculators.dto;
 
 import com.sampleapps.calculators.statics.TimeInterval;
 
@@ -16,34 +16,14 @@ public class LoanCalculator {
 
     private TimeOption timeOption;
 
-    public double getPrincipal() {
+    public double getAmount() {
 
-        return principal;
+        return amount;
     }
 
-    public void setPrincipal(double principal) {
+    public void setAmount(double amount) {
 
-        this.principal = principal;
-    }
-
-    public double getTerm() {
-
-        return term;
-    }
-
-    public void setTerm(double term) {
-
-        this.term = term;
-    }
-
-    public double getRate() {
-
-        return rate;
-    }
-
-    public void setRate(double rate) {
-
-        this.rate = rate;
+        this.amount = amount;
     }
 
     public double getInterest() {
@@ -56,14 +36,34 @@ public class LoanCalculator {
         this.interest = interest;
     }
 
-    public double getAmount() {
+    public double getPrincipal() {
 
-        return amount;
+        return principal;
     }
 
-    public void setAmount(double amount) {
+    public void setPrincipal(double principal) {
 
-        this.amount = amount;
+        this.principal = principal;
+    }
+
+    public double getRate() {
+
+        return rate;
+    }
+
+    public void setRate(double rate) {
+
+        this.rate = rate;
+    }
+
+    public double getTerm() {
+
+        return term;
+    }
+
+    public void setTerm(double term) {
+
+        this.term = term;
     }
 
     public TimeOption getTimeOption() {
@@ -83,20 +83,6 @@ public class LoanCalculator {
         this.amount = this.principal + this.interest;
     }
 
-    public void calculateRate() {
-
-        this.term = calculateLoanTerm();
-        if (this.term != 0) {
-            this.rate = ((this.amount - this.principal) / (this.principal * this.term)) * 100;
-        }
-    }
-
-    public void calculatePrincipal() {
-
-        this.term = calculateLoanTerm();
-        this.principal = this.amount / ((this.rate * 0.01 * this.term) + 1);
-    }
-
     private double calculateLoanTerm() {
 
         TimeInterval interval = this.timeOption.getPeriod();
@@ -109,6 +95,20 @@ public class LoanCalculator {
         }
 
         return loanTerm;
+    }
+
+    public void calculateRate() {
+
+        this.term = calculateLoanTerm();
+        if (this.term != 0) {
+            this.rate = ((this.amount - this.principal) / (this.principal * this.term)) * 100;
+        }
+    }
+
+    public void calculatePrincipal() {
+
+        this.term = calculateLoanTerm();
+        this.principal = this.amount / ((this.rate * 0.01 * this.term) + 1);
     }
 
 }

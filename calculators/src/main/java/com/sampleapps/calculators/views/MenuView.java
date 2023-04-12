@@ -1,20 +1,21 @@
-package com.sampleapps.calculators.vews;
+package com.sampleapps.calculators.views;
 
 import java.util.Scanner;
 
 public class MenuView {
 
-    private MenuView() {}
+    private MenuView() {
+    }
 
     public static void displayHomeMenu(Scanner menuInput) {
 
         String homeView = """
-                                                    
-                          1. VAT Calculator
-                          2. NSSF Calculator
-                          3. Loan Calculator
-                          4. Exit
-                          """;
+                                          
+                1. VAT Calculator
+                2. NSSF Calculator
+                3. Loan Calculator
+                4. Exit
+                """;
 
         System.out.println("\n" + homeView);
 

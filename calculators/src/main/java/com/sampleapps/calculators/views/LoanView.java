@@ -1,30 +1,32 @@
-package com.sampleapps.calculators.vews;
+package com.sampleapps.calculators.views;
 
 import com.sampleapps.calculators.LoanSchedule;
-import com.sampleapps.calculators.pojos.LoanCalculator;
-import com.sampleapps.calculators.pojos.TimeOption;
+import com.sampleapps.calculators.dto.LoanCalculator;
+import com.sampleapps.calculators.dto.TimeOption;
 import com.sampleapps.calculators.statics.TimeInterval;
 
 import java.util.Scanner;
 
 public class LoanView {
 
-    private LoanView() {}
-
     private static final String OUTPUT_FORMAT = "\n%s %-15.2f %s %-15.2f %s %-15.2f %s %-15.2f";
+
+    private LoanView() {
+    }
 
     public static void calculateLoan(Scanner menuInput) {
 
         LoanCalculator calculator = new LoanCalculator();
 
         String loanView = """
-                                                    
-                          Loan Calculator
-                          1. Calculate Monthly Payments on a Loan (Fixed)
-                          2. Determine Rate from given Amount
-                          3. Determine Principal
-                          4. Main Menu
-                          """;
+                                          
+                Loan Calculator
+                1. Calculate Monthly Payments on a Loan (Fixed)
+                2. Determine Rate from given Amount
+                3. Determine Principal
+                4. Main Menu
+                                          
+                """;
 
         System.out.println(loanView);
 
@@ -80,9 +82,9 @@ public class LoanView {
 
         String output = String.format(OUTPUT_FORMAT, "Principal: ", calculator.getPrincipal(), "Rate per month (%): "
                 , calculator.getRate(), "Term (" + calculator.getTimeOption()
-                .getPeriod()
-                .name() + "): ", calculator.getTimeOption()
-                .getTime(), "Amount: ", calculator.getAmount());
+                                                             .getPeriod()
+                                                             .name() + "): ", calculator.getTimeOption()
+                                                                                        .getTime(), "Amount: ", calculator.getAmount());
 
         System.out.println(output);
 
@@ -97,14 +99,14 @@ public class LoanView {
         TimeOption timeOption = new TimeOption();
 
         String interval = """
-                                                    
-                          Choose time interval:
-                          1. Yearly
-                          2. Monthly
-                          3. Weekly
-                          4. Daily
-                                                    
-                          """;
+                                          
+                Choose time interval:
+                1. Yearly
+                2. Monthly
+                3. Weekly
+                4. Daily
+                                          
+                """;
 
         System.out.print(interval);
 
@@ -119,7 +121,7 @@ public class LoanView {
         }
 
         System.out.print("\nEnter time (" + timeOption.getPeriod()
-                .name() + "): ");
+                                                      .name() + "): ");
         double time = menuInput.nextDouble();
         timeOption.setTime(time);
 
@@ -128,7 +130,7 @@ public class LoanView {
 
     private static void invalidOption(Scanner menuInput) {
 
-        System.out.println("Invalid option!");
+        System.out.println("\nInvalid option!");
 
         calculateLoan(menuInput);
     }
