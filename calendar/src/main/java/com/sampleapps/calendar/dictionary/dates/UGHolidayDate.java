@@ -7,7 +7,9 @@ import java.time.Month;
 
 public class UGHolidayDate implements GeneralHoliday {
 
-    private UGHolidayDate() {}
+    private UGHolidayDate() {
+
+    }
 
     public static LocalDate getNewYears(int year) {
 

@@ -12,14 +12,14 @@ public class NSSFCalculator {
 
     private double employeeContribution;
 
-    public double getGrossPay() {
+    public double getEmployeeContribution() {
 
-        return grossPay;
+        return employeeContribution;
     }
 
-    public void setGrossPay(double grossPay) {
+    public void setEmployeeContribution(double employeeContribution) {
 
-        this.grossPay = grossPay;
+        this.employeeContribution = employeeContribution;
     }
 
     public double getEmployerContribution() {
@@ -32,14 +32,24 @@ public class NSSFCalculator {
         this.employerContribution = employerContribution;
     }
 
-    public double getEmployeeContribution() {
+    public double getGrossPay() {
 
-        return employeeContribution;
+        return grossPay;
     }
 
-    public void setEmployeeContribution(double employeeContribution) {
+    public void setGrossPay(double grossPay) {
 
-        this.employeeContribution = employeeContribution;
+        this.grossPay = grossPay;
+    }
+
+    public double getNSSF() {
+
+        return this.employerContribution + this.employeeContribution;
+    }
+
+    public double getNetPay() {
+
+        return this.grossPay - this.employeeContribution;
     }
 
     public void calculateNSSFDeduction() {
@@ -58,16 +68,6 @@ public class NSSFCalculator {
 
         this.grossPay = this.employeeContribution / EMPLOYEE_RATE;
         this.employerContribution = EMPLOYER_RATE * this.grossPay;
-    }
-
-    public double getNSSF() {
-
-        return this.employerContribution + this.employeeContribution;
-    }
-
-    public double getNetPay() {
-
-        return this.grossPay - this.employeeContribution;
     }
 
 }

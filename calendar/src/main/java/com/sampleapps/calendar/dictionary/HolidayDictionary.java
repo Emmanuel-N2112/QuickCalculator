@@ -16,18 +16,6 @@ public class HolidayDictionary {
 
     private Locale locale;
 
-    public CHoliday addHoliday(String name, String type, LocalDate date) {
-
-        CHoliday cHoliday = new CHoliday();
-        cHoliday.setId(UUID.randomUUID()
-                .toString());
-        cHoliday.setName(name);
-        cHoliday.setType(type);
-        cHoliday.setDay(CDay.createDay(date, getLocale()));
-
-        return cHoliday;
-    }
-
     public Locale getLocale() {
 
         return locale;
@@ -50,12 +38,10 @@ public class HolidayDictionary {
 
     public static LocalDate roundDate(LocalDate date) {
 
-        if (date.getDayOfWeek()
-                .equals(DayOfWeek.SATURDAY)) {
+        if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY)) {
             return date.minusDays(1);
 
-        } else if (date.getDayOfWeek()
-                .equals(DayOfWeek.SUNDAY)) {
+        } else if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
             return date.plusDays(1);
 
         } else {
@@ -71,8 +57,7 @@ public class HolidayDictionary {
         int count = 1;
 
         while (startDate.isBefore(endDate)) {
-            if (startDate.getDayOfWeek()
-                        .equals(dayOfWeek) && count != occurrence) {
+            if (startDate.getDayOfWeek().equals(dayOfWeek) && count != occurrence) {
                 count++;
             }
 
@@ -80,6 +65,17 @@ public class HolidayDictionary {
         }
 
         return startDate;
+    }
+
+    public CHoliday addHoliday(String name, String type, LocalDate date) {
+
+        CHoliday cHoliday = new CHoliday();
+        cHoliday.setId(UUID.randomUUID().toString());
+        cHoliday.setName(name);
+        cHoliday.setType(type);
+        cHoliday.setDay(CDay.createDay(date, getLocale()));
+
+        return cHoliday;
     }
 
 }

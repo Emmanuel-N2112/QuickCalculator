@@ -8,24 +8,25 @@ public class NSSFView {
 
     private static final String OUTPUT_FORMAT = "\n%s %-15.2f %s %-15.2f %s %-15.2f %s %-15.2f";
 
-    private NSSFView() {}
+    private NSSFView() {
+    }
 
     public static void calculateNSSF(Scanner menuInput) {
 
         NSSFCalculator calculator = new NSSFCalculator();
 
         String nssfView = """
-                                                    
-                          NSSF Calculator
-                                                    
-                          Your employer deducts 5% from the employee's total gross monthly wage and adds 10% of the total gross monthly wage
-                          making a total contribution of 15% for each employee.
-                                                    
-                          1. Calculate NSSF Deduction
-                          2. Calculate Gross Pay from Employer Contribution
-                          3. Calculate Gross Pay from Employee Contribution
-                          4. Main Menu
-                          """;
+                                          
+                NSSF Calculator
+                                          
+                Your employer deducts 5% from the employee's total gross monthly wage and adds 10% of the total gross monthly wage
+                making a total contribution of 15% for each employee.
+                                          
+                1. Calculate NSSF Deduction
+                2. Calculate Gross Pay from Employer Contribution
+                3. Calculate Gross Pay from Employee Contribution
+                4. Main Menu
+                """;
 
         System.out.println(nssfView);
 

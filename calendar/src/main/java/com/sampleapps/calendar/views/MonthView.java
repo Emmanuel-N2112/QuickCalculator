@@ -10,7 +10,9 @@ import java.util.Scanner;
 
 public class MonthView {
 
-    private MonthView() {}
+    private MonthView() {
+
+    }
 
     public static void displayMonth(Scanner menuInput, Locale locale) {
 

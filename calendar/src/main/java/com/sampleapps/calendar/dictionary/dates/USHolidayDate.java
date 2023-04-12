@@ -7,7 +7,9 @@ import java.time.Month;
 
 public class USHolidayDate implements GeneralHoliday {
 
-    private USHolidayDate() {}
+    private USHolidayDate() {
+
+    }
 
     public static LocalDate getNewYearsEve(int year) {
 

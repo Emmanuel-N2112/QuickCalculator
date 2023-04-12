@@ -41,16 +41,6 @@ public class CDay {
         this.day = day;
     }
 
-    public String getShortDate() {
-
-        return shortDate;
-    }
-
-    public void setShortDate(String shortDate) {
-
-        this.shortDate = shortDate;
-    }
-
     public Integer getDayOfMonth() {
 
         return dayOfMonth;
@@ -81,6 +71,16 @@ public class CDay {
         isDisabled = disabled;
     }
 
+    public String getShortDate() {
+
+        return shortDate;
+    }
+
+    public void setShortDate(String shortDate) {
+
+        this.shortDate = shortDate;
+    }
+
     public Boolean getWeekend() {
 
         return isWeekend;
@@ -103,8 +103,8 @@ public class CDay {
                 .getDisplayName(TextStyle.FULL, locale));
         cDay.setDisabled(false);
         cDay.setWeekend(date.getDayOfWeek()
-                                .equals(DayOfWeek.SUNDAY) || date.getDayOfWeek()
-                                .equals(DayOfWeek.SATURDAY));
+                .equals(DayOfWeek.SUNDAY) || date.getDayOfWeek()
+                .equals(DayOfWeek.SATURDAY));
 
         return cDay;
     }

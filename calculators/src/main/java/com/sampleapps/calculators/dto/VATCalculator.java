@@ -10,6 +10,16 @@ public class VATCalculator {
 
     private double rate;
 
+    public double getGrossAmount() {
+
+        return grossAmount;
+    }
+
+    public void setGrossAmount(double grossAmount) {
+
+        this.grossAmount = grossAmount;
+    }
+
     public double getNetAmount() {
 
         return netAmount;
@@ -20,19 +30,14 @@ public class VATCalculator {
         this.netAmount = netAmount;
     }
 
+    public double getRate() {
+
+        return rate;
+    }
+
     public double getVat() {
 
         return vat;
-    }
-
-    public double getGrossAmount() {
-
-        return grossAmount;
-    }
-
-    public void setGrossAmount(double grossAmount) {
-
-        this.grossAmount = grossAmount;
     }
 
     public void calculateNetAmount() {
@@ -53,11 +58,6 @@ public class VATCalculator {
 
         this.rate = ((this.grossAmount / this.netAmount) - 1);
         this.vat = this.grossAmount - this.netAmount;
-    }
-
-    public double getRate() {
-
-        return rate;
     }
 
 }

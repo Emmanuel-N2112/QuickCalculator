@@ -36,6 +36,8 @@ public class HolidayNames {
 
     public static final String HEROES = "Heroes' Day";
 
-    private HolidayNames() {}
+    private HolidayNames() {
+
+    }
 
 }

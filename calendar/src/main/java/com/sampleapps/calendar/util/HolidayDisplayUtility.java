@@ -13,7 +13,9 @@ public class HolidayDisplayUtility {
 
     private static final String OUTPUT_FORMAT = "\n%-25s %s";
 
-    private HolidayDisplayUtility() {}
+    private HolidayDisplayUtility() {
+
+    }
 
     public static void displayHolidays(String countryCode, int year, Locale locale) {
 
@@ -23,23 +25,21 @@ public class HolidayDisplayUtility {
             UGHoliday ugHoliday = new UGHoliday();
             ugHoliday.setYear(year);
             ugHoliday.setLocale(locale);
-            ugHoliday.getPublicHolidays()
-                    .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
-                                .getDate(), locale), cHoliday.getName());
+            ugHoliday.getPublicHolidays().forEach(cHoliday -> {
+                System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
+                                                                                         .getDate(), locale), cHoliday.getName());
 
-                    });
+            });
 
         } else if (countryCode.equalsIgnoreCase("US")) {
             USHoliday usHoliday = new USHoliday();
             usHoliday.setYear(year);
             usHoliday.setLocale(locale);
-            usHoliday.getPublicHolidays()
-                    .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
-                                .getDate(), locale), cHoliday.getName());
+            usHoliday.getPublicHolidays().forEach(cHoliday -> {
+                System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
+                                                                                         .getDate(), locale), cHoliday.getName());
 
-                    });
+            });
 
         } else {
             System.out.println("\nInvalid country code!");
@@ -66,32 +66,20 @@ public class HolidayDisplayUtility {
             ugHoliday.setYear(month.getYear());
             ugHoliday.setLocale(month.getLocale());
             ugHoliday.getPublicHolidays()
-                    .stream()
-                    .filter(cHoliday -> cHoliday.getDay()
-                            .getDate()
-                            .getMonth()
-                            .equals(month.getMonth()))
-                    .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
-                                .getDate(), month.getLocale()), cHoliday.getName());
-
-                    });
+                     .stream()
+                     .filter(cHoliday -> cHoliday.getDay().getDate().getMonth().equals(month.getMonth()))
+                     .forEach(cHoliday -> System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
+                                                                                                                   .getDate(), month.getLocale()), cHoliday.getName()));
 
         } else if (countryCode.equalsIgnoreCase("US")) {
             USHoliday usHoliday = new USHoliday();
             usHoliday.setYear(month.getYear());
             usHoliday.setLocale(month.getLocale());
             usHoliday.populateStaticNationalHolidays()
-                    .stream()
-                    .filter(cHoliday -> cHoliday.getDay()
-                            .getDate()
-                            .getMonth()
-                            .equals(month.getMonth()))
-                    .forEach(cHoliday -> {
-                        System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
-                                .getDate(), month.getLocale()), cHoliday.getName());
-
-                    });
+                     .stream()
+                     .filter(cHoliday -> cHoliday.getDay().getDate().getMonth().equals(month.getMonth()))
+                     .forEach(cHoliday -> System.out.printf(OUTPUT_FORMAT, TimeConverter.localDateToString(cHoliday.getDay()
+                                                                                                                   .getDate(), month.getLocale()), cHoliday.getName()));
 
         } else {
             System.out.println("\nInvalid country code!");
@@ -108,10 +96,8 @@ public class HolidayDisplayUtility {
             ugHoliday.setLocale(locale);
 
             return ugHoliday.getPublicHolidays()
-                    .stream()
-                    .anyMatch(cHoliday -> cHoliday.getDay()
-                            .getDate()
-                            .equals(date));
+                            .stream()
+                            .anyMatch(cHoliday -> cHoliday.getDay().getDate().equals(date));
 
         } else if (countryCode.equalsIgnoreCase("US")) {
             USHoliday usHoliday = new USHoliday();
@@ -119,10 +105,8 @@ public class HolidayDisplayUtility {
             usHoliday.setLocale(locale);
 
             return usHoliday.getPublicHolidays()
-                    .stream()
-                    .anyMatch(cHoliday -> cHoliday.getDay()
-                            .getDate()
-                            .equals(date));
+                            .stream()
+                            .anyMatch(cHoliday -> cHoliday.getDay().getDate().equals(date));
         } else {
             System.out.println("\nInvalid country code!");
 

@@ -12,14 +12,15 @@ public class PrintOption {
 
     private static final String OUTPUT_FORMAT = "%10s";
 
-    private PrintOption() {}
+    private PrintOption() {
+
+    }
 
     public static void printMonth(CMonth cMonth, Locale locale) {
 
         System.out.println();
 
-        System.out.println("MONTH: " + cMonth.getMonth()
-                .getDisplayName(TextStyle.FULL, locale));
+        System.out.println("MONTH: " + cMonth.getMonth().getDisplayName(TextStyle.FULL, locale));
     }
 
     public static void printDays(CMonth cMonth, Locale locale) {
@@ -28,27 +29,25 @@ public class PrintOption {
 
         for (int i = 0; i < 7; i++) {
             System.out.printf(OUTPUT_FORMAT, cMonth.getFirstDayOfWeek()
-                                                     .plus(i)
-                                                     .getDisplayName(TextStyle.SHORT, locale) + "  ");
+                                                   .plus(i)
+                                                   .getDisplayName(TextStyle.SHORT, locale) + "  ");
         }
     }
 
     public static void printDaysOfMonth(CMonth cMonth, String countryCode, Locale locale) {
 
-        cMonth.getWeeks()
-                .forEach(cWeek -> {
-                    System.out.println();
-                    cWeek.getDays()
-                            .forEach(cDay -> {
-                                if (Boolean.FALSE.equals(cDay.getDisabled())) {
+        cMonth.getWeeks().forEach(cWeek -> {
+            System.out.println();
+            cWeek.getDays().forEach(cDay -> {
+                if (Boolean.FALSE.equals(cDay.getDisabled())) {
 
-                                    System.out.print(determineOutPutColor(cDay, LocalDate.now(), countryCode, locale));
+                    System.out.print(determineOutPutColor(cDay, LocalDate.now(), countryCode, locale));
 
-                                } else {
-                                    System.out.print(String.format(OUTPUT_FORMAT, " "));
-                                }
-                            });
-                });
+                } else {
+                    System.out.printf(OUTPUT_FORMAT, " ");
+                }
+            });
+        });
 
         System.out.println();
     }
@@ -57,22 +56,16 @@ public class PrintOption {
 
         String output;
 
-        if (Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(HolidayDisplayUtility.isHoliday(countryCode,
-                cDay.getDate(), locale))) {
-            if (cDay.getDate()
-                    .equals(goToDate)) {
-                output =
-                        TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
+        if (Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(HolidayDisplayUtility.isHoliday(countryCode, cDay.getDate(), locale))) {
+            if (cDay.getDate().equals(goToDate)) {
+                output = TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
             } else {
-                output =
-                        TextColor.ANSI_BLUE + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
+                output = TextColor.ANSI_BLUE + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
             }
 
         } else {
-            if (cDay.getDate()
-                    .equals(goToDate)) {
-                output =
-                        TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
+            if (cDay.getDate().equals(goToDate)) {
+                output = TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
             } else {
                 output = String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ");
             }
@@ -83,20 +76,18 @@ public class PrintOption {
 
     public static void printDaysOfMonth(LocalDate goToDate, CMonth cMonth, String countryCode, Locale locale) {
 
-        cMonth.getWeeks()
-                .forEach(cWeek -> {
-                    System.out.println();
-                    cWeek.getDays()
-                            .forEach(cDay -> {
-                                if (Boolean.FALSE.equals(cDay.getDisabled())) {
+        cMonth.getWeeks().forEach(cWeek -> {
+            System.out.println();
+            cWeek.getDays().forEach(cDay -> {
+                if (Boolean.FALSE.equals(cDay.getDisabled())) {
 
-                                    System.out.print(determineOutPutColor(cDay, goToDate, countryCode, locale));
+                    System.out.print(determineOutPutColor(cDay, goToDate, countryCode, locale));
 
-                                } else {
-                                    System.out.print(String.format(OUTPUT_FORMAT, " "));
-                                }
-                            });
-                });
+                } else {
+                    System.out.printf(OUTPUT_FORMAT, " ");
+                }
+            });
+        });
 
         System.out.println();
     }

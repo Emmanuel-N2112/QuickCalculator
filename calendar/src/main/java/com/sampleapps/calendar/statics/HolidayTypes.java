@@ -6,6 +6,8 @@ public class HolidayTypes {
 
     public static final String OBSERVANCE = "Observance Holiday";
 
-    private HolidayTypes() {}
+    private HolidayTypes() {
+
+    }
 
 }

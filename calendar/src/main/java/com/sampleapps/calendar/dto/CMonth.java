@@ -11,6 +11,8 @@ import java.util.Locale;
 
 public class CMonth {
 
+    private final List<CHoliday> holidays = new ArrayList<>();
+
     private Integer year;
 
     private Month month;
@@ -19,26 +21,9 @@ public class CMonth {
 
     private DayOfWeek firstDayOfWeek;
 
-    private List<CHoliday> holidays = new ArrayList<>();
+    public DayOfWeek getFirstDayOfWeek() {
 
-    public Integer getYear() {
-
-        return year;
-    }
-
-    public void setYear(Integer year) {
-
-        this.year = year;
-    }
-
-    public Month getMonth() {
-
-        return month;
-    }
-
-    public void setMonth(Month month) {
-
-        this.month = month;
+        return firstDayOfWeek;
     }
 
     public Locale getLocale() {
@@ -53,9 +38,14 @@ public class CMonth {
         this.locale = locale;
     }
 
-    public DayOfWeek getFirstDayOfWeek() {
+    public Month getMonth() {
 
-        return firstDayOfWeek;
+        return month;
+    }
+
+    public void setMonth(Month month) {
+
+        this.month = month;
     }
 
     public List<CWeek> getWeeks() {
@@ -80,7 +70,7 @@ public class CMonth {
             day.setDisabled(startWeekOfFirst.getMonthValue() != startMonthDate.getMonthValue());
 
             if (day.getDate()
-                        .get(weekFields.weekOfWeekBasedYear()) != weekOfYear) {
+                    .get(weekFields.weekOfWeekBasedYear()) != weekOfYear) {
 
                 CWeek cWeek = new CWeek();
                 cWeek.setWeek(day.getDate()
@@ -108,6 +98,16 @@ public class CMonth {
         }
 
         return weekList;
+    }
+
+    public Integer getYear() {
+
+        return year;
+    }
+
+    public void setYear(Integer year) {
+
+        this.year = year;
     }
 
 }

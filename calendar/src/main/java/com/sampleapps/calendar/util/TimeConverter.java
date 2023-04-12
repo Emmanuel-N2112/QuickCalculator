@@ -11,15 +11,16 @@ public class TimeConverter {
 
     private static final String DATE_FORMATS = "[yyyy-MM-dd][dd/MM/yyyy]";
 
-    private TimeConverter() {}
+    private TimeConverter() {
+
+    }
 
     public static String localDateToString(LocalDate date, Locale locale) {
 
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM uuuu", locale);
 
-            return date.atStartOfDay()
-                    .format(formatter);
+            return date.atStartOfDay().format(formatter);
 
         } catch (Exception e) {
             LOGGER.severe(String.format("Error formatting date to string! %s", e.getLocalizedMessage()));

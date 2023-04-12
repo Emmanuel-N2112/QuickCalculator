@@ -8,16 +8,6 @@ public class TimeOption {
 
     private TimeInterval period;
 
-    public double getTime() {
-
-        return time;
-    }
-
-    public void setTime(double time) {
-
-        this.time = time;
-    }
-
     public TimeInterval getPeriod() {
 
         return period;
@@ -26,6 +16,16 @@ public class TimeOption {
     public void setPeriod(TimeInterval period) {
 
         this.period = period;
+    }
+
+    public double getTime() {
+
+        return time;
+    }
+
+    public void setTime(double time) {
+
+        this.time = time;
     }
 
 }

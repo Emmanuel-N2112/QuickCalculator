@@ -16,34 +16,14 @@ public class LoanCalculator {
 
     private TimeOption timeOption;
 
-    public double getPrincipal() {
+    public double getAmount() {
 
-        return principal;
+        return amount;
     }
 
-    public void setPrincipal(double principal) {
+    public void setAmount(double amount) {
 
-        this.principal = principal;
-    }
-
-    public double getTerm() {
-
-        return term;
-    }
-
-    public void setTerm(double term) {
-
-        this.term = term;
-    }
-
-    public double getRate() {
-
-        return rate;
-    }
-
-    public void setRate(double rate) {
-
-        this.rate = rate;
+        this.amount = amount;
     }
 
     public double getInterest() {
@@ -56,14 +36,34 @@ public class LoanCalculator {
         this.interest = interest;
     }
 
-    public double getAmount() {
+    public double getPrincipal() {
 
-        return amount;
+        return principal;
     }
 
-    public void setAmount(double amount) {
+    public void setPrincipal(double principal) {
 
-        this.amount = amount;
+        this.principal = principal;
+    }
+
+    public double getRate() {
+
+        return rate;
+    }
+
+    public void setRate(double rate) {
+
+        this.rate = rate;
+    }
+
+    public double getTerm() {
+
+        return term;
+    }
+
+    public void setTerm(double term) {
+
+        this.term = term;
     }
 
     public TimeOption getTimeOption() {

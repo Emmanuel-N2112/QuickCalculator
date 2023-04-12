@@ -12,6 +12,26 @@ public class CHoliday implements Comparable<CHoliday> {
 
     private CDay day;
 
+    public String getCountry() {
+
+        return country;
+    }
+
+    public void setCountry(String country) {
+
+        this.country = country;
+    }
+
+    public CDay getDay() {
+
+        return day;
+    }
+
+    public void setDay(CDay day) {
+
+        this.day = day;
+    }
+
     public String getId() {
 
         return id;
@@ -42,34 +62,14 @@ public class CHoliday implements Comparable<CHoliday> {
         this.type = type;
     }
 
-    public String getCountry() {
-
-        return country;
-    }
-
-    public void setCountry(String country) {
-
-        this.country = country;
-    }
-
     @Override
     public int compareTo(CHoliday o) {
 
         return this.getDay()
-                       .getDate()
-                       .getDayOfYear() - o.getDay()
-                       .getDate()
-                       .getDayOfYear();
-    }
-
-    public CDay getDay() {
-
-        return day;
-    }
-
-    public void setDay(CDay day) {
-
-        this.day = day;
+                .getDate()
+                .getDayOfYear() - o.getDay()
+                .getDate()
+                .getDayOfYear();
     }
 
 }

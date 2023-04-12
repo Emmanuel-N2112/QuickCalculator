@@ -5,21 +5,23 @@ import java.util.Scanner;
 
 public class MenuView {
 
-    private MenuView() {}
+    private MenuView() {
+
+    }
 
     public static void displayHomeMenu(Scanner menuInput) {
 
         Locale locale = Locale.US;
 
         String homeView = """                       
-                          1. View Year
-                          2. View Month
-                          3. View today
-                          4. Go to date
-                          5. View Holidays
-                          6. Add Holiday
-                          7. Exit
-                          """;
+                1. View Year
+                2. View Month
+                3. View today
+                4. Go to date
+                5. View Holidays
+                6. Add Holiday
+                7. Exit
+                """;
 
         System.out.println("\n" + homeView);
 

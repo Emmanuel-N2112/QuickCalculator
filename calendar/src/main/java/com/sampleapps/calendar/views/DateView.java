@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 public class DateView {
 
-    private DateView() {}
+    private DateView() {
+
+    }
 
     public static void goToToday(Scanner menuInput, Locale locale) {
 

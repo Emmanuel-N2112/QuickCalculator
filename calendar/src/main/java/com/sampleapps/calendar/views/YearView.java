@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 public class YearView {
 
-    private YearView() {}
+    private YearView() {
+
+    }
 
     public static void displayYear(Scanner menuInput, Locale locale) {
 
