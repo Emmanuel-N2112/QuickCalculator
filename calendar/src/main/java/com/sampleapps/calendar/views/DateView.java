@@ -3,12 +3,11 @@ package com.sampleapps.calendar.views;
 import com.sampleapps.calendar.dto.CMonth;
 import com.sampleapps.calendar.util.HolidayUtility;
 import com.sampleapps.calendar.util.PrintOption;
+import com.sampleapps.calendar.util.TimeConverter;
 
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Scanner;
-
-import static com.sampleapps.calendar.util.TimeConverter.stringToLocalDate;
 
 public class DateView {
 
@@ -35,7 +34,7 @@ public class DateView {
         System.out.print("\nEnter date ([yyyy-MM-dd][dd/MM/yyyy]): ");
         String dateInput = menuInput.next();
 
-        LocalDate goToDate = stringToLocalDate(dateInput, locale);
+        LocalDate goToDate = TimeConverter.stringToLocalDate(dateInput, locale);
 
         if (goToDate != null) {
             displayDate(goToDate, locale, countryCode);
