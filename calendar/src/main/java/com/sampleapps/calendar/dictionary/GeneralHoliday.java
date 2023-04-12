@@ -30,6 +30,11 @@ public interface GeneralHoliday {
         return LocalDate.of(year, Month.DECEMBER, 26);
     }
 
+    static LocalDate getGoodFriday(int year) {
+
+        return getEasterDay(year).minusDays(2);
+    }
+
     // Algorithm for calculating the date of Easter Sunday (Meeus/Jones/Butcher Gregorian algorithm)
     // http://en.wikipedia.org/wiki/Computus#Meeus.2FJones.2FButcher_Gregorian_algorithm
     static LocalDate getEasterDay(int year) {
@@ -55,14 +60,14 @@ public interface GeneralHoliday {
         return LocalDate.of(year, month, day);
     }
 
-    static LocalDate getGoodFriday(int year) {
-
-        return getEasterDay(year).minusDays(2);
-    }
-
     static LocalDate getEasterMonday(int year) {
 
         return getEasterDay(year).plusDays(1);
+    }
+
+    static LocalDate getWomenDay(int year) {
+
+        return LocalDate.of(year, Month.MARCH, 8);
     }
 
 }

@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class VATView {
 
-    private VATView() {}
-
     private static final String OUTPUT_FORMAT = "\n%s %-15.2f %s %-15.2f %s %-15.2f %s %-15.2f";
+
+    private VATView() {}
 
     public static void calculateVAT(Scanner menuInput) {
 
@@ -73,4 +73,5 @@ public class VATView {
 
         calculateVAT(menuInput);
     }
+
 }

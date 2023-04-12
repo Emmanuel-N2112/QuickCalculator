@@ -21,24 +21,6 @@ public class CDay {
 
     private Boolean isWeekend;
 
-    public static CDay createDay(LocalDate date, Locale locale) {
-
-        CDay cDay = new CDay();
-        cDay.setDate(date);
-        cDay.setDayOfMonth(date.getDayOfMonth());
-        cDay.setDayOfYear(date.getDayOfYear());
-        cDay.setShortDate(date.getDayOfWeek()
-                .getDisplayName(TextStyle.SHORT, locale));
-        cDay.setDay(date.getDayOfWeek()
-                .getDisplayName(TextStyle.FULL, locale));
-        cDay.setDisabled(false);
-        cDay.setWeekend(date.getDayOfWeek()
-                                .equals(DayOfWeek.SUNDAY) || date.getDayOfWeek()
-                                .equals(DayOfWeek.SATURDAY));
-
-        return cDay;
-    }
-
     public LocalDate getDate() {
 
         return date;
@@ -107,6 +89,24 @@ public class CDay {
     public void setWeekend(Boolean weekend) {
 
         isWeekend = weekend;
+    }
+
+    public static CDay createDay(LocalDate date, Locale locale) {
+
+        CDay cDay = new CDay();
+        cDay.setDate(date);
+        cDay.setDayOfMonth(date.getDayOfMonth());
+        cDay.setDayOfYear(date.getDayOfYear());
+        cDay.setShortDate(date.getDayOfWeek()
+                .getDisplayName(TextStyle.SHORT, locale));
+        cDay.setDay(date.getDayOfWeek()
+                .getDisplayName(TextStyle.FULL, locale));
+        cDay.setDisabled(false);
+        cDay.setWeekend(date.getDayOfWeek()
+                                .equals(DayOfWeek.SUNDAY) || date.getDayOfWeek()
+                                .equals(DayOfWeek.SATURDAY));
+
+        return cDay;
     }
 
 }

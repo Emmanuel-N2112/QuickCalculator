@@ -53,6 +53,34 @@ public class PrintOption {
         System.out.println();
     }
 
+    private static String determineOutPutColor(CDay cDay, LocalDate goToDate, String countryCode, Locale locale) {
+
+        String output;
+
+        if (Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(HolidayDisplayUtility.isHoliday(countryCode,
+                cDay.getDate(), locale))) {
+            if (cDay.getDate()
+                    .equals(goToDate)) {
+                output =
+                        TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
+            } else {
+                output =
+                        TextColor.ANSI_BLUE + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
+            }
+
+        } else {
+            if (cDay.getDate()
+                    .equals(goToDate)) {
+                output =
+                        TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
+            } else {
+                output = String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ");
+            }
+        }
+
+        return output;
+    }
+
     public static void printDaysOfMonth(LocalDate goToDate, CMonth cMonth, String countryCode, Locale locale) {
 
         cMonth.getWeeks()
@@ -80,34 +108,6 @@ public class PrintOption {
         for (int i = 0; i < number; i++) {
             System.out.print("--");
         }
-    }
-
-    private static String determineOutPutColor(CDay cDay, LocalDate goToDate, String countryCode, Locale locale) {
-
-        String output;
-
-        if (Boolean.TRUE.equals(cDay.getWeekend()) || Boolean.TRUE.equals(HolidayDisplayUtility.isHoliday(countryCode,
-                cDay.getDate(), locale))) {
-            if (cDay.getDate()
-                    .equals(goToDate)) {
-                output =
-                        TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
-            } else {
-                output =
-                        TextColor.ANSI_BLUE + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
-            }
-
-        } else {
-            if (cDay.getDate()
-                    .equals(goToDate)) {
-                output =
-                        TextColor.ANSI_GREEN + String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ") + TextColor.ANSI_RESET;
-            } else {
-                output = String.format(OUTPUT_FORMAT, cDay.getDayOfMonth() + " ");
-            }
-        }
-
-        return output;
     }
 
 }

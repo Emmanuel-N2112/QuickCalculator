@@ -29,6 +29,7 @@ public class MonthView {
     }
 
     private static void printMonth(int year, int month, String countryCode, Locale locale) {
+
         System.out.println("\nYEAR: " + year);
 
         CMonth cMonth = new CMonth();

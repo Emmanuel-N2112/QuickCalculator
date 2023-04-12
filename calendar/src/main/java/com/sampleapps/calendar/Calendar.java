@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class Calendar {
+
     private static final Logger LOGGER = Logger.getLogger(Calendar.class.getName());
 
     public static void main(String[] args) {

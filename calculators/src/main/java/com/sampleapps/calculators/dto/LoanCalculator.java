@@ -83,20 +83,6 @@ public class LoanCalculator {
         this.amount = this.principal + this.interest;
     }
 
-    public void calculateRate() {
-
-        this.term = calculateLoanTerm();
-        if (this.term != 0) {
-            this.rate = ((this.amount - this.principal) / (this.principal * this.term)) * 100;
-        }
-    }
-
-    public void calculatePrincipal() {
-
-        this.term = calculateLoanTerm();
-        this.principal = this.amount / ((this.rate * 0.01 * this.term) + 1);
-    }
-
     private double calculateLoanTerm() {
 
         TimeInterval interval = this.timeOption.getPeriod();
@@ -109,6 +95,20 @@ public class LoanCalculator {
         }
 
         return loanTerm;
+    }
+
+    public void calculateRate() {
+
+        this.term = calculateLoanTerm();
+        if (this.term != 0) {
+            this.rate = ((this.amount - this.principal) / (this.principal * this.term)) * 100;
+        }
+    }
+
+    public void calculatePrincipal() {
+
+        this.term = calculateLoanTerm();
+        this.principal = this.amount / ((this.rate * 0.01 * this.term) + 1);
     }
 
 }

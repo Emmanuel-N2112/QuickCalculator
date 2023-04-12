@@ -52,16 +52,6 @@ public class CHoliday implements Comparable<CHoliday> {
         this.country = country;
     }
 
-    public CDay getDay() {
-
-        return day;
-    }
-
-    public void setDay(CDay day) {
-
-        this.day = day;
-    }
-
     @Override
     public int compareTo(CHoliday o) {
 
@@ -70,6 +60,16 @@ public class CHoliday implements Comparable<CHoliday> {
                        .getDayOfYear() - o.getDay()
                        .getDate()
                        .getDayOfYear();
+    }
+
+    public CDay getDay() {
+
+        return day;
+    }
+
+    public void setDay(CDay day) {
+
+        this.day = day;
     }
 
 }

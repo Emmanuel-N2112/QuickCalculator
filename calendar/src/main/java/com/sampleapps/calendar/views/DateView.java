@@ -26,6 +26,27 @@ public class DateView {
 
     }
 
+    private static void displayDate(LocalDate goToDate, Locale locale, String countryCode) {
+
+        System.out.println("\nYEAR: " + goToDate.getYear());
+
+        CMonth cMonth = new CMonth();
+        cMonth.setYear(goToDate.getYear());
+        cMonth.setMonth(goToDate.getMonth());
+        cMonth.setLocale(locale);
+
+        PrintOption.printMonth(cMonth, locale);
+
+        PrintOption.printDays(cMonth, locale);
+
+        PrintOption.printDottedLine(35);
+
+        PrintOption.printDaysOfMonth(goToDate, cMonth, countryCode, locale);
+
+        HolidayDisplayUtility.displayHolidays(countryCode, cMonth);
+
+    }
+
     public static void viewDate(Scanner menuInput, Locale locale) {
 
         System.out.print("\nEnter country (UG/US): ");
@@ -45,27 +66,6 @@ public class DateView {
         }
 
         MenuView.displayHomeMenu(menuInput);
-
-    }
-
-    private static void displayDate(LocalDate goToDate, Locale locale, String countryCode) {
-
-        System.out.println("\nYEAR: " + goToDate.getYear());
-
-        CMonth cMonth = new CMonth();
-        cMonth.setYear(goToDate.getYear());
-        cMonth.setMonth(goToDate.getMonth());
-        cMonth.setLocale(locale);
-
-        PrintOption.printMonth(cMonth, locale);
-
-        PrintOption.printDays(cMonth, locale);
-
-        PrintOption.printDottedLine(35);
-
-        PrintOption.printDaysOfMonth(goToDate, cMonth, countryCode, locale);
-
-        HolidayDisplayUtility.displayHolidays(countryCode, cMonth);
 
     }
 

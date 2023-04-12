@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class LoanView {
 
-    private LoanView() {}
-
     private static final String OUTPUT_FORMAT = "\n%s %-15.2f %s %-15.2f %s %-15.2f %s %-15.2f";
+
+    private LoanView() {}
 
     public static void calculateLoan(Scanner menuInput) {
 
@@ -24,7 +24,7 @@ public class LoanView {
                           2. Determine Rate from given Amount
                           3. Determine Principal
                           4. Main Menu
-                          
+                                                    
                           """;
 
         System.out.println(loanView);
@@ -81,9 +81,9 @@ public class LoanView {
 
         String output = String.format(OUTPUT_FORMAT, "Principal: ", calculator.getPrincipal(), "Rate per month (%): "
                 , calculator.getRate(), "Term (" + calculator.getTimeOption()
-                .getPeriod()
-                .name() + "): ", calculator.getTimeOption()
-                .getTime(), "Amount: ", calculator.getAmount());
+                        .getPeriod()
+                        .name() + "): ", calculator.getTimeOption()
+                        .getTime(), "Amount: ", calculator.getAmount());
 
         System.out.println(output);
 

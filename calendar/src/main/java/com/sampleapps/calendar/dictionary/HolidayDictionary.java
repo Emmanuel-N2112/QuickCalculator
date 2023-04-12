@@ -16,6 +16,38 @@ public class HolidayDictionary {
 
     private Locale locale;
 
+    public CHoliday addHoliday(String name, String type, LocalDate date) {
+
+        CHoliday cHoliday = new CHoliday();
+        cHoliday.setId(UUID.randomUUID()
+                .toString());
+        cHoliday.setName(name);
+        cHoliday.setType(type);
+        cHoliday.setDay(CDay.createDay(date, getLocale()));
+
+        return cHoliday;
+    }
+
+    public Locale getLocale() {
+
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+
+        this.locale = locale;
+    }
+
+    public Integer getYear() {
+
+        return year;
+    }
+
+    public void setYear(Integer year) {
+
+        this.year = year;
+    }
+
     public static LocalDate roundDate(LocalDate date) {
 
         if (date.getDayOfWeek()
@@ -48,38 +80,6 @@ public class HolidayDictionary {
         }
 
         return startDate;
-    }
-
-    public CHoliday addHoliday(String name, String type, LocalDate date) {
-
-        CHoliday cHoliday = new CHoliday();
-        cHoliday.setId(UUID.randomUUID()
-                .toString());
-        cHoliday.setName(name);
-        cHoliday.setType(type);
-        cHoliday.setDay(CDay.createDay(date, getLocale()));
-
-        return cHoliday;
-    }
-
-    public Integer getYear() {
-
-        return year;
-    }
-
-    public void setYear(Integer year) {
-
-        this.year = year;
-    }
-
-    public Locale getLocale() {
-
-        return locale;
-    }
-
-    public void setLocale(Locale locale) {
-
-        this.locale = locale;
     }
 
 }

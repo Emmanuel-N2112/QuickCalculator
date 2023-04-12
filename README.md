@@ -5,6 +5,7 @@ This repository contains a set of sample applications in java.
 ## Prerequisites
 
 We assume that the reader is at least vaguely familiar with Java and understands:
+
 - Variables and expressions
 - Methods
 - Decision structures
@@ -16,7 +17,6 @@ To compile and run this demo you will need:
 
 - JDK 11+
 - GraalVM
-
 
 ### Configuring GraalVM and JDK 11+
 

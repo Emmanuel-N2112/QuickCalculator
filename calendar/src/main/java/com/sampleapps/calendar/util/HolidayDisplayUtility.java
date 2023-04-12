@@ -15,15 +15,6 @@ public class HolidayDisplayUtility {
 
     private HolidayDisplayUtility() {}
 
-    private static void displayHeader() {
-
-        System.out.println(PUBLIC_HOLIDAY);
-
-        System.out.printf(OUTPUT_FORMAT, "Date", "Name");
-
-        PrintOption.printDottedLine(25);
-    }
-
     public static void displayHolidays(String countryCode, int year, Locale locale) {
 
         displayHeader();
@@ -55,6 +46,15 @@ public class HolidayDisplayUtility {
         }
 
         System.out.println();
+    }
+
+    private static void displayHeader() {
+
+        System.out.println(PUBLIC_HOLIDAY);
+
+        System.out.printf(OUTPUT_FORMAT, "Date", "Name");
+
+        PrintOption.printDottedLine(25);
     }
 
     public static void displayHolidays(String countryCode, CMonth month) {

@@ -46,7 +46,7 @@ public class UGHolidayDate implements GeneralHoliday {
 
     public static LocalDate getWomenDay(int year) {
 
-        return LocalDate.of(year, 3, 8);
+        return GeneralHoliday.getWomenDay(year);
     }
 
     public static LocalDate getEasterDay(int year) {

@@ -2,8 +2,6 @@ package com.sampleapps.calendar.statics;
 
 public class HolidayNames {
 
-    private HolidayNames() {}
-
     public static final String NEW_YEAR_EVE = "New Year's Eve";
 
     public static final String NEW_YEAR = "New Year's Day";
@@ -37,5 +35,7 @@ public class HolidayNames {
     public static final String MARTYR = "Martyr's Day";
 
     public static final String HEROES = "Heroes' Day";
+
+    private HolidayNames() {}
 
 }

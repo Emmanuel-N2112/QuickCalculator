@@ -33,29 +33,6 @@ public class UGHoliday extends HolidayDictionary {
         return holidays;
     }
 
-    public List<CHoliday> getObservedPublicHolidays() {
-
-        List<CHoliday> holidays = new ArrayList<>();
-        populateStaticNationalHolidays().forEach(cHoliday -> {
-            CDay observedDay = CDay.createDay(roundDate(cHoliday.getDay()
-                    .getDate()), getLocale());
-            cHoliday.setDay(observedDay);
-            holidays.add(cHoliday);
-
-        });
-        populateDynamicNationalHolidays().forEach(cHoliday -> {
-            CDay observedDay = CDay.createDay(roundDate(cHoliday.getDay()
-                    .getDate()), getLocale());
-            cHoliday.setDay(observedDay);
-            holidays.add(cHoliday);
-
-        });
-
-        Collections.sort(holidays);
-
-        return holidays;
-    }
-
     protected List<CHoliday> populateStaticNationalHolidays() {
 
         List<CHoliday> holidays = new ArrayList<>();
@@ -93,6 +70,29 @@ public class UGHoliday extends HolidayDictionary {
 
         return holidays;
 
+    }
+
+    public List<CHoliday> getObservedPublicHolidays() {
+
+        List<CHoliday> holidays = new ArrayList<>();
+        populateStaticNationalHolidays().forEach(cHoliday -> {
+            CDay observedDay = CDay.createDay(roundDate(cHoliday.getDay()
+                    .getDate()), getLocale());
+            cHoliday.setDay(observedDay);
+            holidays.add(cHoliday);
+
+        });
+        populateDynamicNationalHolidays().forEach(cHoliday -> {
+            CDay observedDay = CDay.createDay(roundDate(cHoliday.getDay()
+                    .getDate()), getLocale());
+            cHoliday.setDay(observedDay);
+            holidays.add(cHoliday);
+
+        });
+
+        Collections.sort(holidays);
+
+        return holidays;
     }
 
 }

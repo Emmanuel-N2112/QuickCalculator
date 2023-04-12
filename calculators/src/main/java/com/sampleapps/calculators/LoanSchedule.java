@@ -48,7 +48,8 @@ public class LoanSchedule {
                         .getTime());
             }
 
-            System.out.printf("\n" + "%-15s %-15s %-15s %-15s %-15s%n", "Payment Date", "Amount", "Principal", "Interest", "Balance");
+            System.out.printf("\n" + "%-15s %-15s %-15s %-15s %-15s%n", "Payment Date", "Amount", "Principal",
+                    "Interest", "Balance");
 
             while (disbursementDate.isBefore(endDate)) {
 

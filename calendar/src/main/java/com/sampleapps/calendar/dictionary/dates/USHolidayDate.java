@@ -2,10 +2,8 @@ package com.sampleapps.calendar.dictionary.dates;
 
 import com.sampleapps.calendar.dictionary.GeneralHoliday;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.temporal.TemporalAdjusters;
 
 public class USHolidayDate implements GeneralHoliday {
 
