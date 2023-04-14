@@ -10,7 +10,7 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Locale;
 import java.util.UUID;
 
-public class HolidayDictionary {
+public abstract class HolidayDictionary {
 
     private Integer year;
 
